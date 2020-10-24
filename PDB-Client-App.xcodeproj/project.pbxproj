@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		973713902543A96100D11590 /* ProjectSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9737138F2543A96100D11590 /* ProjectSelectionView.swift */; };
+		973713992543A98C00D11590 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973713982543A98C00D11590 /* Project.swift */; };
 		973D8D562541EEAF00FEBB7C /* PDB_Client_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973D8D552541EEAF00FEBB7C /* PDB_Client_AppApp.swift */; };
 		973D8D582541EEAF00FEBB7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973D8D572541EEAF00FEBB7C /* ContentView.swift */; };
 		973D8D5A2541EEB000FEBB7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 973D8D592541EEB000FEBB7C /* Assets.xcassets */; };
 		973D8D5D2541EEB000FEBB7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 973D8D5C2541EEB000FEBB7C /* Preview Assets.xcassets */; };
 		973D8D682541EEB100FEBB7C /* PDB_Client_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973D8D672541EEB100FEBB7C /* PDB_Client_AppTests.swift */; };
 		973D8D732541EEB100FEBB7C /* PDB_Client_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973D8D722541EEB100FEBB7C /* PDB_Client_AppUITests.swift */; };
+		973D8D8725420C1C00FEBB7C /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973D8D8625420C1C00FEBB7C /* HomePage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9737138F2543A96100D11590 /* ProjectSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSelectionView.swift; sourceTree = "<group>"; };
+		973713982543A98C00D11590 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		973D8D522541EEAF00FEBB7C /* PDB-Client-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PDB-Client-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		973D8D552541EEAF00FEBB7C /* PDB_Client_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDB_Client_AppApp.swift; sourceTree = "<group>"; };
 		973D8D572541EEAF00FEBB7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +50,7 @@
 		973D8D6E2541EEB100FEBB7C /* PDB-Client-AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PDB-Client-AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		973D8D722541EEB100FEBB7C /* PDB_Client_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDB_Client_AppUITests.swift; sourceTree = "<group>"; };
 		973D8D742541EEB100FEBB7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		973D8D8625420C1C00FEBB7C /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9737138E2543A93E00D11590 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9737138F2543A96100D11590 /* ProjectSelectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		973713972543A97300D11590 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				973713982543A98C00D11590 /* Project.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		973D8D492541EEAF00FEBB7C = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +117,9 @@
 		973D8D542541EEAF00FEBB7C /* PDB-Client-App */ = {
 			isa = PBXGroup;
 			children = (
+				973713972543A97300D11590 /* Models */,
+				9737138E2543A93E00D11590 /* Views */,
+				973D8D8B25420C2400FEBB7C /* Pages */,
 				973D8D552541EEAF00FEBB7C /* PDB_Client_AppApp.swift */,
 				973D8D572541EEAF00FEBB7C /* ContentView.swift */,
 				973D8D592541EEB000FEBB7C /* Assets.xcassets */,
@@ -128,6 +153,14 @@
 				973D8D742541EEB100FEBB7C /* Info.plist */,
 			);
 			path = "PDB-Client-AppUITests";
+			sourceTree = "<group>";
+		};
+		973D8D8B25420C2400FEBB7C /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				973D8D8625420C1C00FEBB7C /* HomePage.swift */,
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +292,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				973713902543A96100D11590 /* ProjectSelectionView.swift in Sources */,
 				973D8D582541EEAF00FEBB7C /* ContentView.swift in Sources */,
+				973D8D8725420C1C00FEBB7C /* HomePage.swift in Sources */,
+				973713992543A98C00D11590 /* Project.swift in Sources */,
 				973D8D562541EEAF00FEBB7C /* PDB_Client_AppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
