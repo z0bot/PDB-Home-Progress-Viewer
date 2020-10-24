@@ -9,20 +9,24 @@ import SwiftUI
 
 struct HomePage: View {
     private var cols: [GridItem] = [
-        GridItem(.fixed(100)),
-        GridItem(.fixed(100))
+        GridItem(.flexible(minimum: 100, maximum: 300), spacing: 20),
+        GridItem(.flexible(minimum: 100, maximum: 300), spacing: 20)
     ]
     
     var body: some View {
         
         VStack {
             Image("PDBLogo")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 50)
+                
             
             Spacer()
             
             HStack {
                 Text("Select Home")
-                    .foregroundColor(.green)
+                    .foregroundColor(Color("TextGreen"))
                     .bold()
                 
                 Spacer()
@@ -31,17 +35,15 @@ struct HomePage: View {
             }.padding()
             
             ScrollView {
-            LazyVGrid(columns: cols) {
-                
-                ForEach((1..<10)) { i in
-                    Text("Placeholder")
-                    Text("Placeholder")
-                    Text("Placeholder")
-                    Text("Placeholder")
+                LazyVGrid(columns: cols,
+                          spacing: 30) {
+                    
+                    ForEach((1..<10)) { i in
+                        ProjectSelectionView(project: Project(imageURL: "", name: "2020 Bernie St.", address: ""))
+                    }
+                    
                 }
-                
-            }
-            .padding()
+                .padding()
             
             }.overlay(
                 RoundedRectangle(cornerRadius: 10)
@@ -53,16 +55,12 @@ struct HomePage: View {
             HStack() {
                 Text("Logout")
                     .bold()
-                    .foregroundColor(.green)
+                    .foregroundColor(Color("TextGreen"))
                 Spacer()
             }
             .padding()
             .frame(alignment: .leading)
         }
-        
-        
-        
-        
     }
 }
 
