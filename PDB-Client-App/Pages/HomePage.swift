@@ -12,8 +12,8 @@ struct HomePage: View {
     @ObservedObject var viewModel = HomePageVM()
     
     private var cols: [GridItem] = [
-        GridItem(.flexible(minimum: 100, maximum: 300), spacing: 20),
-        GridItem(.flexible(minimum: 100, maximum: 300), spacing: 20)
+        GridItem(.flexible(), spacing: 20),
+        GridItem(.flexible(), spacing: 20)
     ]
     
     var body: some View {

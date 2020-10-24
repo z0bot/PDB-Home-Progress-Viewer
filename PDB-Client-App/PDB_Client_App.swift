@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
-
+import Firebase
 
 @main
-struct PDB_Client_AppApp: App {
+struct PDB_Client_App: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             HomePage()
