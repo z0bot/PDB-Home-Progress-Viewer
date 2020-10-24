@@ -12,7 +12,7 @@ import SwiftUI
 struct PDB_Client_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomePage()
         }
     }
 }

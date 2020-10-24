@@ -7,15 +7,16 @@
 
 import Foundation
 
-class Project: ObservableObject {
+struct Project: Identifiable {
+    var id = UUID()
     public var imageURL: String
     public var name: String
     public var address: String
     public var archived: Bool
     
+    static let `default` = Self(imageURL: "", name: "2020 Bernie St.", address: "2020 Bernie St.")
     
-    
-    public init(imageURL: String, name: String, address: String) {
+    init(imageURL: String, name: String, address: String) {
         self.imageURL = imageURL
         self.name = name
         self.address = address

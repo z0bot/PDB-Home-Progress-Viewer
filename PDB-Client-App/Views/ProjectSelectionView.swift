@@ -14,15 +14,14 @@ struct ProjectSelectionView: View {
         VStack(spacing: .none) {
             Image("HouseTemp")
                 .resizable()
-                .cornerRadius(25)
+                .cornerRadius(20)
                 .scaledToFit()
             
             Text(project.name)
-                .font(.subheadline)
+                .font(Font.custom("Microsoft Tai Le", size: 15))
                 .bold()
                 .foregroundColor(Color("TextGreen"))
         }
-            
     }
 }
 

@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import Combine
 
 struct HomePage: View {
+    @ObservedObject var viewModel = HomePageVM()
+    
     private var cols: [GridItem] = [
         GridItem(.flexible(minimum: 100, maximum: 300), spacing: 20),
         GridItem(.flexible(minimum: 100, maximum: 300), spacing: 20)
@@ -26,22 +29,28 @@ struct HomePage: View {
             
             HStack {
                 Text("Select Home")
-                    .foregroundColor(Color("TextGreen"))
                     .bold()
+                    .foregroundColor(Color("TextGreen"))
+                    .font(Font.custom("Microsoft Tai Le", size: 23))
                 
                 Spacer()
                 
                 Image("plus")
+                    .gesture(TapGesture().onEnded({
+                        viewModel.projects.append(Project(imageURL: "", name: "newProj", address: "aaa"))
+                    }))
             }.padding()
             
             ScrollView {
                 LazyVGrid(columns: cols,
                           spacing: 30) {
                     
-                    ForEach((1..<10)) { i in
-                        ProjectSelectionView(project: Project(imageURL: "", name: "2020 Bernie St.", address: ""))
+                    ForEach(viewModel.projects) { project in
+                        ProjectSelectionView(project: project)
+                            .gesture(TapGesture().onEnded({
+                                viewModel.projects.append(Project(imageURL: "", name: "newProj", address: "aaa"))
+                            }))
                     }
-                    
                 }
                 .padding()
             
@@ -54,6 +63,7 @@ struct HomePage: View {
             
             HStack() {
                 Text("Logout")
+                    .font(Font.custom("Microsoft Tai Le", size: 23))
                     .bold()
                     .foregroundColor(Color("TextGreen"))
                 Spacer()
