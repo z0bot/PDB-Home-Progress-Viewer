@@ -12,6 +12,7 @@ struct ProjectSelectionView: View {
     
     var body: some View {
         VStack(spacing: .none) {
+            //TODO: Replace HouseTemp with data pulled from remote server
             Image("HouseTemp")
                 .resizable()
                 .cornerRadius(20)

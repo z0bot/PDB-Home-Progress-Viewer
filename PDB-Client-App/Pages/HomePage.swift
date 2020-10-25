@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 struct HomePage: View {
+    // If we need to pass in this data later, use @EnvironmentObject instead of @ObservedObject
     @ObservedObject var viewModel = HomePageVM()
     
     private var cols: [GridItem] = [
@@ -17,7 +18,6 @@ struct HomePage: View {
     ]
     
     var body: some View {
-        
         VStack {
             Image("PDBLogo")
                 .resizable()
@@ -37,6 +37,7 @@ struct HomePage: View {
                 
                 Image("plus")
                     .gesture(TapGesture().onEnded({
+                        //TODO: Add functionality for adding a new property
                         viewModel.projects.append(Project(imageURL: "", name: "newProj", address: "aaa"))
                     }))
             }.padding()
@@ -46,10 +47,8 @@ struct HomePage: View {
                           spacing: 30) {
                     
                     ForEach(viewModel.projects) { project in
+                        //TODO: Make navigation happen when you tap on one of the ProjectSelectionViews
                         ProjectSelectionView(project: project)
-                            .gesture(TapGesture().onEnded({
-                                viewModel.projects.append(Project(imageURL: "", name: "newProj", address: "aaa"))
-                            }))
                     }
                 }
                 .padding()
@@ -62,6 +61,7 @@ struct HomePage: View {
             .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             
             HStack() {
+                //TODO: Add logout functionality tap gesture recognizer
                 Text("Logout")
                     .font(Font.custom("Microsoft Tai Le", size: 23))
                     .bold()

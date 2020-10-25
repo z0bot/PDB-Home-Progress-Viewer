@@ -14,7 +14,7 @@ struct Project: Identifiable {
     public var address: String
     public var archived: Bool
     
-    static let `default` = Self(imageURL: "", name: "2020 Bernie St.", address: "2020 Bernie St.")
+    //static let `default` = Self(imageURL: "", name: "2020 Bernie St.", address: "2020 Bernie St.")
     
     init(imageURL: String, name: String, address: String) {
         self.imageURL = imageURL
