@@ -18,59 +18,65 @@ struct HomePage: View {
     ]
     
     var body: some View {
-        VStack {
-            Image("PDBLogo")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 50)
+        NavigationView {
+            VStack {
+                Image("PDBLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 50)
                 
-            
-            Spacer()
-            
-            HStack {
-                Text("Select Home")
-                    .bold()
-                    .foregroundColor(Color("TextGreen"))
-                    .font(Font.custom("Microsoft Tai Le", size: 23))
                 
-                Spacer()
                 
-                Image("plus")
-                    .gesture(TapGesture().onEnded({
-                        //TODO: Add functionality for adding a new property
-                        viewModel.projects.append(Project(imageURL: "", name: "newProj", address: "aaa"))
-                    }))
-            }.padding()
-            
-            ScrollView {
-                LazyVGrid(columns: cols,
-                          spacing: 30) {
+                
+                HStack {
+                    Text("Select Home")
+                        .bold()
+                        .foregroundColor(Color("TextGreen"))
+                        .font(Font.custom("Microsoft Tai Le", size: 23))
                     
-                    ForEach(viewModel.projects) { project in
-                        //TODO: Make navigation happen when you tap on one of the ProjectSelectionViews
-                        ProjectSelectionView(project: project)
+                    Spacer()
+                    
+                    Image("plus")
+                        .gesture(TapGesture().onEnded({
+                            //TODO: Add functionality for adding a new property
+                            viewModel.projects.append(Project(imageURL: "", name: "newProj", address: "aaa"))
+                        }))
+                }.padding()
+                
+                ScrollView {
+                    LazyVGrid(columns: cols,
+                              spacing: 30) {
+                        
+                        ForEach(viewModel.projects) { project in
+                            //TODO: Make navigation happen when you tap on one of the ProjectSelectionViews
+                            NavigationLink(destination: Text(project.name)) {
+                                ProjectSelectionView(project: project)
+                            }.navigationBarHidden(true)
+                            .navigationTitle("")
+                        }
                     }
+                    .padding()
+                    
+                }.overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray,
+                                lineWidth: 1)
+                )
+                .padding(.all)
+                
+                HStack() {
+                    //TODO: Add logout functionality tap gesture recognizer
+                    Text("Logout")
+                        .font(Font.custom("Microsoft Tai Le", size: 23))
+                        .bold()
+                        .foregroundColor(Color("TextGreen"))
+                    Spacer()
                 }
                 .padding()
-            
-            }.overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.gray,
-                            lineWidth: 1)
-            )
-            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            
-            HStack() {
-                //TODO: Add logout functionality tap gesture recognizer
-                Text("Logout")
-                    .font(Font.custom("Microsoft Tai Le", size: 23))
-                    .bold()
-                    .foregroundColor(Color("TextGreen"))
-                Spacer()
+                .frame(alignment: .leading)
             }
-            .padding()
-            .frame(alignment: .leading)
-        }
+        }.navigationBarHidden(true)
+        .navigationTitle("")
     }
 }
 
