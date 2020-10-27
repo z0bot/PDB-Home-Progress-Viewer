@@ -10,18 +10,17 @@ import SwiftUI
 struct ImagePreviewView: View {
     var image: ImageModel
     var body: some View {
-        VStack {
+        VStack(spacing: .none) {
             Image("HouseTemp")
                 .resizable()
                 .cornerRadius(20)
                 .scaledToFit()
             
             Text("hewwo")
-                .font(Font.custom("Microsoft Tai Le", size: 15))
+                .font(Font.custom("Microsoft Tai Le", size: 23))
                 .bold()
                 .foregroundColor(.white)
-                .padding(.top, -120.0)
-                .font(.system(size: 23))
+                .padding(.top, -70.0)
         }
     }
 }

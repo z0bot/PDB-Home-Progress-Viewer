@@ -23,6 +23,7 @@ struct TabPage: View {
                     }
                 }.tag(0)
             
+            /*ProgressGalleryPage(rooms: project.rooms)*/
             ProgressGalleryPage(rooms: project.rooms)
                 .tabItem {
                     if(selection == 1) {
@@ -55,6 +56,8 @@ struct TabPage: View {
 
 struct TabPage_Previews: PreviewProvider {
     static var previews: some View {
-        TabPage(project: Project(imageURL: "", name: "TestProj", address: "TestProj Ln"))
+        TabPage(project: Project(imageURL: "", name: "Proj1", address: "addr1", rooms: [Room(images: [ImageModel(imageData: "This is an image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is yet another image", date: Date(timeIntervalSinceNow: 0)),
+                                                                                                      ImageModel(imageData: "This is an image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is yet another image", date: Date(timeIntervalSinceNow: 0))], name: "Foyer"),
+                             Room(images: [ImageModel(imageData: "This is an image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is yet another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is an image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is yet another image", date: Date(timeIntervalSinceNow: 0))], name: "Dining Room")]))
     }
 }
