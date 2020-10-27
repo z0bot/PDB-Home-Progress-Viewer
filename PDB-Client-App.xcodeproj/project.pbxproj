@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AE51DDB2547F3B300CADAC1 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE51DDA2547F3B300CADAC1 /* LoginPage.swift */; };
 		1EBDF3742A11E6A177CD697C /* Pods_PDB_Client_App_PDB_Client_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7825AF7A5663FF3A046202A5 /* Pods_PDB_Client_App_PDB_Client_AppUITests.framework */; };
 		9733515F2546418600C4BDB9 /* ProgressGalleryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733515E2546418600C4BDB9 /* ProgressGalleryPage.swift */; };
 		97335167254641D500C4BDB9 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97335166254641D500C4BDB9 /* Room.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		0E38F84A5C99E015C2D7C144 /* Pods-PDB-Client-AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDB-Client-AppTests.release.xcconfig"; path = "Target Support Files/Pods-PDB-Client-AppTests/Pods-PDB-Client-AppTests.release.xcconfig"; sourceTree = "<group>"; };
+		1AE51DDA2547F3B300CADAC1 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
 		5C4780D5B0B8F6FB287E9DC3 /* Pods-PDB-Client-AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDB-Client-AppTests.debug.xcconfig"; path = "Target Support Files/Pods-PDB-Client-AppTests/Pods-PDB-Client-AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7825AF7A5663FF3A046202A5 /* Pods_PDB_Client_App_PDB_Client_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PDB_Client_App_PDB_Client_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9733515E2546418600C4BDB9 /* ProgressGalleryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressGalleryPage.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				973D8D8625420C1C00FEBB7C /* HomePage.swift */,
 				9733515E2546418600C4BDB9 /* ProgressGalleryPage.swift */,
 				9733A52F2547ACFF00DEC9AD /* TabPage.swift */,
+				1AE51DDA2547F3B300CADAC1 /* LoginPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AE51DDB2547F3B300CADAC1 /* LoginPage.swift in Sources */,
 				973713A82543D1CE00D11590 /* PreviewData.swift in Sources */,
 				9733A5352547BED600DEC9AD /* ImagePreviewView.swift in Sources */,
 				973713902543A96100D11590 /* ProjectSelectionView.swift in Sources */,
