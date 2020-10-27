@@ -8,32 +8,50 @@
 import SwiftUI
 
 struct LoginPage: View {
-    
+    @State var userName: String = ""
+    @State var password: String = ""
     var body: some View {
         GeometryReader{ Geometry in
             VStack(alignment: .center) {
                 Image("Logowithname")
+                    .resizable()
+                    .scaledToFit()
                 VStack(alignment: .center){
-                    TextField("Username", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                    TextField("Username", text: $userName)
                     Divider()
-                    TextField("Password", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                    TextField("Password", text: $password)
                     Divider()
-                    Spacer()
-                    Button(action: {}){
-                        Text("Login").padding(5)
-                    }.background(Color.gray).foregroundColor(Color.white).cornerRadius(5)
-                }.padding(40)
+                    Button(action: {}){Text("Create an account").foregroundColor(Color("TextGreen"))}.padding(10)
+                    Spacer(minLength: 10)
+                    
+                    
+                        Button(action: {}){
+                            Text("Login").padding([.top, .bottom], 12.0)
+                                .padding([.leading, .trailing], 30)
+                                
+                                .font(.title2)
+                        }.background(Color.gray)
+                         .foregroundColor(Color.white)
+                        .cornerRadius(9)
+                        
+                        
+                }
+                .padding(.top, -5.0)
+                .padding([.leading, .bottom, .trailing], 50.0)
+                
             
                 
                 
             
             VStack(alignment: .center){
-                Image("triangle").aspectRatio(contentMode: .fit)
+                Image("triangle")
+                    .resizable()
+                    .scaledToFill()
             }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,
                     maxHeight: .infinity, alignment: .bottom)
         
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,
-                maxHeight: .infinity)
+                maxHeight: .infinity).edgesIgnoringSafeArea(.bottom)
         }
     }
 }
@@ -41,6 +59,8 @@ struct LoginPage: View {
 
 struct LoginPage_Previews: PreviewProvider {
     static var previews: some View {
-        LoginPage()
+        Group {
+            LoginPage()
+        }
     }
 }
