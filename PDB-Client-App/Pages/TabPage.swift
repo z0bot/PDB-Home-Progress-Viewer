@@ -9,25 +9,46 @@ import SwiftUI
 
 struct TabPage: View {
     var project: Project
+    @State private var selection = 1
     
     var body: some View {
-        TabView {
+        TabView(selection: $selection) {
             Text("Tab1")
                 .tabItem {
-                    Image("messageCircle_Icon").padding()
-                }
+                    if(selection == 0) {
+                        Image("messageActive_Icon").padding()
+                    }
+                    else {
+                        Image("messageCircle_Icon").padding()
+                    }
+                }.tag(0)
+            
             ProgressGalleryPage(rooms: project.rooms)
                 .tabItem {
-                    Image("gallery_Icon")
-                        .resizable()
-                        .padding()
-                }
+                    if(selection == 1) {
+                        Image("galleryActive_Icon")
+                            .resizable()
+                            .padding()
+                    }
+                    else {
+                        Image("gallery_Icon")
+                            .resizable()
+                            .padding()
+                    }
+                }.tag(1)
             Text("Tab3")
                 .tabItem {
-                    Image("file_Icon")
-                        .resizable()
-                        .padding()
-                }
+                    if(selection == 2) {
+                        Image("fileActive_Icon")
+                            .resizable()
+                            .padding()
+                    }
+                    else {
+                        Image("file_Icon")
+                            .resizable()
+                            .padding()
+                    }
+                }.tag(2)
         }
     }
 }
