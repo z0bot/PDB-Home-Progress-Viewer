@@ -48,10 +48,12 @@ struct HomePage: View {
                     
                     ForEach(viewModel.projects) { project in
                         //TODO: Make navigation happen when you tap on one of the ProjectSelectionViews
-                        NavigationLink(destination: Text(project.name)) {
+                        NavigationLink(destination:
+                                        TabPage(project: project)
+                        ) {
                             ProjectSelectionView(project: project)
                         }.navigationBarHidden(true)
-                        .navigationTitle("")
+                        .navigationTitle("Progress Gallery")
                     }
                 }
                 .padding()

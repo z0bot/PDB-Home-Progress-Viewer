@@ -13,6 +13,7 @@ struct Project: Identifiable {
     public var name: String
     public var address: String
     public var archived: Bool
+    public var rooms: [Room]
     
     //static let `default` = Self(imageURL: "", name: "2020 Bernie St.", address: "2020 Bernie St.")
     
@@ -20,6 +21,7 @@ struct Project: Identifiable {
         self.imageURL = imageURL
         self.name = name
         self.address = address
+        rooms = []
         archived = false
     }
 }
