@@ -1,0 +1,6 @@
+framework module Pods_PDB_Client_App_PDB_Client_AppUITests {
+  umbrella header "Pods-PDB-Client-App-PDB-Client-AppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
