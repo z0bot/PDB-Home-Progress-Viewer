@@ -98,7 +98,7 @@
 		<key>Pods-PDB-Client-App.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 			<key>orderHint</key>
 			<integer>18</integer>
 		</dict>
