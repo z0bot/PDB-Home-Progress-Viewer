@@ -1,0 +1,6 @@
+framework module Pods_PDB_Client_App {
+  umbrella header "Pods-PDB-Client-App-umbrella.h"
+
+  export *
+  module * { export * }
+}
