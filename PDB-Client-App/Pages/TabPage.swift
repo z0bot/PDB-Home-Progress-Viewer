@@ -37,7 +37,7 @@ struct TabPage: View {
                             .padding()
                     }
                 }.tag(1)
-            Text("Tab3")
+            ChangeOrderFormPage()
                 .tabItem {
                     if(selection == 2) {
                         Image("fileActive_Icon")
