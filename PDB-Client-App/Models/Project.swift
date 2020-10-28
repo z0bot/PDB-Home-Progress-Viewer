@@ -24,4 +24,12 @@ struct Project: Identifiable {
         rooms = []
         archived = false
     }
+    
+    init(imageURL: String, name: String, address: String, rooms: [Room]) {
+        self.imageURL = imageURL
+        self.name = name
+        self.address = address
+        self.rooms = rooms
+        archived = false
+    }
 }
