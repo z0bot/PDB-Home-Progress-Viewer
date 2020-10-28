@@ -10,22 +10,23 @@ import SwiftUI
 struct LoginPage: View {
     @State var userName: String = ""
     @State var password: String = ""
+    @State var action: Bool = false
     var body: some View {
         GeometryReader{ Geometry in
             VStack(alignment: .center) {
+  
                 Image("Logowithname")
                     .resizable()
                     .scaledToFit()
+                
                 VStack(alignment: .center){
                     TextField("Username", text: $userName)
                     Divider()
-                    TextField("Password", text: $password)
+                    SecureField("Password", text: $password)
                     Divider()
                     Button(action: {}){Text("Create an account").foregroundColor(Color("TextGreen"))}.padding(10)
                     Spacer(minLength: 10)
-                    
-                    
-                        Button(action: {}){
+                        Button(action: SubmitLogin){
                             Text("Login").padding([.top, .bottom], 12.0)
                                 .padding([.leading, .trailing], 30)
                                 
@@ -44,6 +45,8 @@ struct LoginPage: View {
                 
             
             VStack(alignment: .center){
+                NavigationLink(destination: HomePage(),
+                               isActive: $action){}
                 Image("triangle")
                     .resizable()
                     .scaledToFill()
@@ -53,10 +56,15 @@ struct LoginPage: View {
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,
                 maxHeight: .infinity).edgesIgnoringSafeArea(.bottom)
         }
-    }
+    
 }
 
 
+    func SubmitLogin()
+    {
+        action = true
+    }
+}
 struct LoginPage_Previews: PreviewProvider {
     static var previews: some View {
         Group {
