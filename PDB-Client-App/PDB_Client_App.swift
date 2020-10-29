@@ -15,7 +15,7 @@ struct PDB_Client_App: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                HomePage()
+                LoginPage()
             }.navigationBarHidden(true)
             .navigationTitle("")
         }
