@@ -18,3 +18,9 @@ class HomePageVM: ObservableObject {
         Project(imageURL: "", name: "Proj3", address: "addr3")
     ]
 }
+
+struct HomePageVM_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}
