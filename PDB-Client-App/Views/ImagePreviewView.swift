@@ -16,7 +16,7 @@ struct ImagePreviewView: View {
                 .cornerRadius(20)
                 .scaledToFit()
             
-            Text("hewwo")
+            Text(image.DateString())
                 .font(Font.custom("Microsoft Tai Le", size: 23))
                 .bold()
                 .foregroundColor(.white)

@@ -30,7 +30,7 @@ struct LoginPage: View {
                             Text("Login").padding([.top, .bottom], 12.0)
                                 .padding([.leading, .trailing], 30)
                                 
-                                .font(.title2)
+                                .font(.title)
                         }.background(Color.gray)
                          .foregroundColor(Color.white)
                         .cornerRadius(9)

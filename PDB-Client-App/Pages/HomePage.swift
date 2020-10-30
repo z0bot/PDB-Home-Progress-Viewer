@@ -7,15 +7,16 @@
 
 import SwiftUI
 import Combine
+import ASCollectionView
 
 struct HomePage: View {
     // If we need to pass in this data later, use @EnvironmentObject instead of @ObservedObject
     @ObservedObject var viewModel = HomePageVM()
     
-    private var cols: [GridItem] = [
+    /*private var cols: [GridItem] = [
         GridItem(.flexible(), spacing: 20),
         GridItem(.flexible(), spacing: 20)
-    ]
+    ]*/
     
     var body: some View {
         VStack {
@@ -23,10 +24,7 @@ struct HomePage: View {
                 .resizable()
                 .scaledToFit()
                 .frame(height: 50)
-            
-            
-            
-            
+
             HStack {
                 Text("Select Home")
                     .bold()
@@ -42,28 +40,57 @@ struct HomePage: View {
                     }))
             }.padding()
             
-            ScrollView {
-                LazyVGrid(columns: cols,
-                          spacing: 30) {
+            //ScrollView {
+                
+                ASCollectionView(data: viewModel.projects) { project,arg  in
+                    
+                    NavigationLink(destination:
+                                    TabPage(project: project)
+                    ) {
+                        ProjectSelectionView(project: project)
+                    }.navigationBarHidden(true)
+                    .padding([.top])
+                    
+                }.layout {
+                    .grid()
+                }.overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray,
+                                lineWidth: 1)
+                )
+                //.frame(height: .infinity)
+                .padding(.all)
+                /*LazyVGrid(columns: cols,
+                          spacing: 30)*/
+                /*Grid(tracks: 2) {
                     
                     ForEach(viewModel.projects) { project in
-                        //TODO: Make navigation happen when you tap on one of the ProjectSelectionViews
+                        
                         NavigationLink(destination:
                                         TabPage(project: project)
                         ) {
                             ProjectSelectionView(project: project)
                         }.navigationBarHidden(true)
-                        .navigationTitle("Progress Gallery")
+                        .padding()
+                        //TODO: Make navigation happen when you tap on one of the ProjectSelectionViews
                     }
-                }
-                .padding()
+                }.gridContentMode(.scroll)*/
                 
-            }.overlay(
+                //}
+                //.frame(height: .infinity)
+                /*.overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray,
+                                lineWidth: 1)
+                )
+                .padding(.all)*/
+                
+            /*}.overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray,
                             lineWidth: 1)
             )
-            .padding(.all)
+            .padding(.all)*/
             
             HStack() {
                 //TODO: Add logout functionality tap gesture recognizer
@@ -78,6 +105,8 @@ struct HomePage: View {
         }
     }
 }
+
+
 
 struct HomePage_Previews: PreviewProvider {
     static var previews: some View {

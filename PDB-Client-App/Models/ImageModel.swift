@@ -11,4 +11,10 @@ struct ImageModel: Identifiable {
     var id = UUID()
     var imageData: String
     var date: Date
+    
+    func DateString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter.string(from: date)
+    }
 }
