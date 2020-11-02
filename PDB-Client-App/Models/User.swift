@@ -11,7 +11,7 @@ class User {
     public private(set) var Name: String
     public private(set) var PhoneNumber: String
     public private(set) var EmailAddress: String
-    
+
     public private(set) var Projects: [Project]
     
     func SendMessage() {
@@ -28,4 +28,3 @@ class User {
         Projects = [Project]()
     }
 }
-
