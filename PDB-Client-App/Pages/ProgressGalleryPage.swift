@@ -11,28 +11,30 @@ struct ProgressGalleryPage: View {
     var rooms: [Room]
     
     var body: some View {
-        VStack(alignment: .leading) {
-            ForEach(rooms) { room in
-                Text(room.name)
-                    .padding()
-                    .font(.system(size: 23))
-                
-                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach(room.images) { image in
-                          
-                            
-                            NavigationLink(destination: Text(image.imageData)) {
-                                ImagePreviewView(image: image)
-                                    .frame(width: 150)
-                                    .padding([.leading,.trailing], 2.0)
+        ScrollView {
+            VStack(alignment: .leading) {
+                ForEach(rooms) { room in
+                    Text(room.name)
+                        .padding()
+                        .font(.system(size: 23))
+                    
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(room.images) { image in
+                              
+                                
+                                NavigationLink(destination: Text(image.imageData)) {
+                                    ImagePreviewView(image: image)
+                                        .frame(width: 150)
+                                        .padding([.leading,.trailing], 2.0)
+                                }
+                                
                             }
-                            
                         }
                     }
                 }
+                Spacer()
             }
-            Spacer()
         }
     }
 }

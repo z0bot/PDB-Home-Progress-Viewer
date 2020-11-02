@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "messageCircle_Icon.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "messageCircle_Icon.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },

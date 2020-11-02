@@ -14,9 +14,13 @@
 		9733A52B2547A8F700DEC9AD /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733A52A2547A8F700DEC9AD /* ImageModel.swift */; };
 		9733A5302547ACFF00DEC9AD /* TabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733A52F2547ACFF00DEC9AD /* TabPage.swift */; };
 		9733A5352547BED600DEC9AD /* ImagePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733A5342547BED600DEC9AD /* ImagePreviewView.swift */; };
+		9733DF33254DE29400710880 /* ChangeOrderPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733DF32254DE29400710880 /* ChangeOrderPreviewView.swift */; };
+		9733DF37254DE50400710880 /* SignFormPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733DF36254DE50400710880 /* SignFormPage.swift */; };
 		9733E969254CA9BF00034689 /* ASCollectionViewDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 9733E968254CA9BF00034689 /* ASCollectionViewDynamic */; };
 		9733E96A254CA9BF00034689 /* ASCollectionViewDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9733E968254CA9BF00034689 /* ASCollectionViewDynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9733E976254CC65A00034689 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9733E975254CC65A00034689 /* Launch Screen.storyboard */; };
+		9733E97C254CDA6100034689 /* ChangeOrderPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733E97B254CDA6100034689 /* ChangeOrderPage.swift */; };
+		9733E980254CDB0A00034689 /* ChangeOrderForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733E97F254CDB0A00034689 /* ChangeOrderForm.swift */; };
 		973630272544D353009796F1 /* AppDelegateOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973630262544D353009796F1 /* AppDelegateOLD.swift */; };
 		973713902543A96100D11590 /* ProjectSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9737138F2543A96100D11590 /* ProjectSelectionView.swift */; };
 		973713992543A98C00D11590 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973713982543A98C00D11590 /* Project.swift */; };
@@ -79,7 +83,11 @@
 		9733A52A2547A8F700DEC9AD /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		9733A52F2547ACFF00DEC9AD /* TabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPage.swift; sourceTree = "<group>"; };
 		9733A5342547BED600DEC9AD /* ImagePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewView.swift; sourceTree = "<group>"; };
+		9733DF32254DE29400710880 /* ChangeOrderPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeOrderPreviewView.swift; sourceTree = "<group>"; };
+		9733DF36254DE50400710880 /* SignFormPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignFormPage.swift; sourceTree = "<group>"; };
 		9733E975254CC65A00034689 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		9733E97B254CDA6100034689 /* ChangeOrderPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeOrderPage.swift; sourceTree = "<group>"; };
+		9733E97F254CDB0A00034689 /* ChangeOrderForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeOrderForm.swift; sourceTree = "<group>"; };
 		973630262544D353009796F1 /* AppDelegateOLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateOLD.swift; sourceTree = "<group>"; };
 		9737138F2543A96100D11590 /* ProjectSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSelectionView.swift; sourceTree = "<group>"; };
 		973713982543A98C00D11590 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
@@ -168,6 +176,7 @@
 			children = (
 				9737138F2543A96100D11590 /* ProjectSelectionView.swift */,
 				9733A5342547BED600DEC9AD /* ImagePreviewView.swift */,
+				9733DF32254DE29400710880 /* ChangeOrderPreviewView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,6 +189,7 @@
 				973AEED4254497DA00FCBDD4 /* Client.swift */,
 				97335166254641D500C4BDB9 /* Room.swift */,
 				9733A52A2547A8F700DEC9AD /* ImageModel.swift */,
+				9733E97F254CDB0A00034689 /* ChangeOrderForm.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -277,6 +287,8 @@
 				9733515E2546418600C4BDB9 /* ProgressGalleryPage.swift */,
 				9733A52F2547ACFF00DEC9AD /* TabPage.swift */,
 				1AE51DDA2547F3B300CADAC1 /* LoginPage.swift */,
+				9733E97B254CDA6100034689 /* ChangeOrderPage.swift */,
+				9733DF36254DE50400710880 /* SignFormPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -528,6 +540,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AE51DDB2547F3B300CADAC1 /* LoginPage.swift in Sources */,
+				9733DF33254DE29400710880 /* ChangeOrderPreviewView.swift in Sources */,
 				973713A82543D1CE00D11590 /* PreviewData.swift in Sources */,
 				9733A5352547BED600DEC9AD /* ImagePreviewView.swift in Sources */,
 				973713902543A96100D11590 /* ProjectSelectionView.swift in Sources */,
@@ -537,14 +550,17 @@
 				973D8D582541EEAF00FEBB7C /* ContentView.swift in Sources */,
 				973D8D8725420C1C00FEBB7C /* HomePage.swift in Sources */,
 				973713992543A98C00D11590 /* Project.swift in Sources */,
+				9733E980254CDB0A00034689 /* ChangeOrderForm.swift in Sources */,
 				973AEEDE25449D3900FCBDD4 /* HomePageVM.swift in Sources */,
 				9764618C254A7E4200B6545A /* SceneDelegate.swift in Sources */,
 				973D8D562541EEAF00FEBB7C /* PDB_Client_App.swift in Sources */,
 				973AEED5254497DA00FCBDD4 /* Client.swift in Sources */,
+				9733E97C254CDA6100034689 /* ChangeOrderPage.swift in Sources */,
 				973630272544D353009796F1 /* AppDelegateOLD.swift in Sources */,
 				9733A52B2547A8F700DEC9AD /* ImageModel.swift in Sources */,
 				97646187254A7E3400B6545A /* AppDelegate.swift in Sources */,
 				973AEED02544937900FCBDD4 /* User.swift in Sources */,
+				9733DF37254DE50400710880 /* SignFormPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,7 +731,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "PDB.PDB-Client-App1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -738,7 +754,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "PDB.PDB-Client-App1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
