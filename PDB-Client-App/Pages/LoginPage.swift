@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
-struct LoginPage: View {
+struct LoginPage: View{
     @State var userName: String = ""
     @State var password: String = ""
     @State var action: Bool = false
+    @State var errorText: String = ""
+    @State var showAlert: Bool = false
     var body: some View {
+        
         GeometryReader{ Geometry in
             VStack(alignment: .center) {
   
@@ -29,6 +33,13 @@ struct LoginPage: View {
                         Button(action: SubmitLogin){
                             Text("Login").padding([.top, .bottom], 12.0)
                                 .padding([.leading, .trailing], 30)
+                                .alert(isPresented: self.$showAlert, content: {
+                                        Alert(title: Text("Login Error"), message: Text("Invalid Username or Password"),
+                                              dismissButton: .cancel(Text("Ok"))
+                                              )}
+                                        )
+                                
+                                        
                                 
                                 .font(.title2)
                         }.background(Color.gray)
@@ -40,6 +51,7 @@ struct LoginPage: View {
                 .padding(.top, -5.0)
                 .padding([.leading, .bottom, .trailing], 50.0)
                 
+                
             
                 
                 
@@ -49,26 +61,28 @@ struct LoginPage: View {
                                isActive: $action){}
                 Image("triangle")
                     .resizable()
-                    .scaledToFill()
+                    .scaledToFit()
             }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,
                     maxHeight: .infinity, alignment: .bottom)
+          
         
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,
-                maxHeight: .infinity).edgesIgnoringSafeArea(.bottom)
-        }
-    
-}
-
-
-    func SubmitLogin()
-    {
-        action = true
+                maxHeight: .infinity).edgesIgnoringSafeArea([.bottom, .top])
     }
+            
+           
 }
-struct LoginPage_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            LoginPage()
+        func SubmitLogin()
+        {
+            Auth.auth().signIn(withEmail: userName, password: password) {user, error in
+                if let error = error
+                            {
+                            self.errorText = error.localizedDescription
+                            showAlert = true
+                            self.password = ""
+                            return
+                            }
+                action = true
+            }
         }
-    }
 }
