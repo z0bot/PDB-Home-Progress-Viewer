@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 
 struct LoginPage: View{
     @State var userName: String = ""
@@ -24,24 +25,28 @@ struct LoginPage: View{
                     .scaledToFit()
                 
                 VStack(alignment: .center){
-                    TextField("Username", text: $userName)
+                    TextField("Email", text: $userName)
                     Divider()
                     SecureField("Password", text: $password)
                     Divider()
-                    Button(action: {}){Text("Create an account").foregroundColor(Color("TextGreen"))}.padding(10)
+                    Button(action: CreateUser){
+                        Text("Create an account")
+                            .foregroundColor(Color("TextGreen"))
+                            .alert(isPresented: self.$showAlert, content: {
+                                    Alert(title: Text("Error Creating User"), message: Text(errorText),
+                                          dismissButton: .cancel(Text("Ok"))
+                                          )}
+                            )}.padding(10)
                     Spacer(minLength: 10)
-                        Button(action: SubmitLogin){
-                            Text("Login").padding([.top, .bottom], 12.0)
-                                .padding([.leading, .trailing], 30)
-                                .alert(isPresented: self.$showAlert, content: {
-                                        Alert(title: Text("Login Error"), message: Text("Invalid Username or Password"),
-                                              dismissButton: .cancel(Text("Ok"))
-                                              )}
-                                        )
-                                
-                                        
-                                
-                                .font(.title)
+                    Button(action: SubmitLogin){
+                        Text("Login").padding([.top, .bottom], 12.0)
+                            .padding([.leading, .trailing], 30)
+                            .alert(isPresented: self.$showAlert, content: {
+                                    Alert(title: Text("Login Error"), message: Text(errorText),
+                                          dismissButton: .cancel(Text("Ok"))
+                                          )}
+                            )
+                            .font(.title)
                         }.background(Color.gray)
                          .foregroundColor(Color.white)
                         .cornerRadius(9)
@@ -77,12 +82,36 @@ struct LoginPage: View{
             Auth.auth().signIn(withEmail: userName, password: password) {user, error in
                 if let error = error
                             {
-                            self.errorText = error.localizedDescription
-                            showAlert = true
-                            self.password = ""
-                            return
+                                self.errorText = error.localizedDescription
+                                showAlert = true
+                                self.password = ""
+                                return
                             }
                 action = true
             }
+        }
+        
+        func CreateUser()
+        {
+            Auth.auth().createUser(withEmail: userName, password: password) {user, error in
+                if let error = error
+                {
+                    self.errorText = error.localizedDescription
+                    showAlert = true
+                    self.password = ""
+                    return
+                }
+                
+                let db = Firestore.firestore()
+                db.collection("Users").addDocument(data: [
+                    "users_email": userName,
+                    "users_firstname": "Blake",
+                    "users_lastname": "Cocks2",
+                    "users_phone": "1234567890"
+                ])
+                action = true
+            }
+            
+           
         }
 }
