@@ -13,13 +13,13 @@ struct TabPage: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            Text("Tab1")
+            MessagePage(userID: UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!, messages: [Message(senderID: UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!, sender: "BC", text: "Hey", date: Date()), Message(senderID: UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5E")!, sender: "BC", text: "Hey 2 u", date: Date())])
                 .tabItem {
                     if(selection == 0) {
-                        Image("messageActive_Icon").padding()
+                        Image("messageActive_Icon")
                     }
                     else {
-                        Image("messageCircle_Icon").padding()
+                        Image("messageCircle_Icon")
                     }
                 }.tag(0)
             
@@ -28,26 +28,18 @@ struct TabPage: View {
                 .tabItem {
                     if(selection == 1) {
                         Image("galleryActive_Icon")
-                            .resizable()
-                            .padding()
                     }
                     else {
                         Image("gallery_Icon")
-                            .resizable()
-                            .padding()
                     }
                 }.tag(1)
-            Text("Tab3")
+            ChangeOrderPage(forms: project.changeOrderForms)
                 .tabItem {
                     if(selection == 2) {
                         Image("fileActive_Icon")
-                            .resizable()
-                            .padding()
                     }
                     else {
                         Image("file_Icon")
-                            .resizable()
-                            .padding()
                     }
                 }.tag(2)
         }
@@ -58,6 +50,6 @@ struct TabPage_Previews: PreviewProvider {
     static var previews: some View {
         TabPage(project: Project(imageURL: "", name: "Proj1", address: "addr1", rooms: [Room(images: [ImageModel(imageData: "This is an image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is yet another image", date: Date(timeIntervalSinceNow: 0)),
                                                                                                       ImageModel(imageData: "This is an image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is yet another image", date: Date(timeIntervalSinceNow: 0))], name: "Foyer"),
-                             Room(images: [ImageModel(imageData: "This is an image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is yet another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is an image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is yet another image", date: Date(timeIntervalSinceNow: 0))], name: "Dining Room")]))
+                             Room(images: [ImageModel(imageData: "This is an image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is yet another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is an image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is yet another image", date: Date(timeIntervalSinceNow: 0))], name: "Dining Room")], forms: [ChangeOrderForm(title: "A form", description: "A description")]))
     }
 }

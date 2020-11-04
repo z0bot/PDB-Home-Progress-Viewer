@@ -41,7 +41,7 @@ struct LoginPage: View{
                                 
                                         
                                 
-                                .font(.title2)
+                                .font(.title)
                         }.background(Color.gray)
                          .foregroundColor(Color.white)
                         .cornerRadius(9)

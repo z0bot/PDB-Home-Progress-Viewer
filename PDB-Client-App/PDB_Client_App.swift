@@ -8,7 +8,7 @@
 import SwiftUI
 import Firebase
 
-@main
+/*@main
 struct PDB_Client_App: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
@@ -17,7 +17,7 @@ struct PDB_Client_App: App {
             NavigationView {
                 LoginPage()
             }.navigationBarHidden(true)
-            .navigationTitle("")
         }
     }
 }
+*/
