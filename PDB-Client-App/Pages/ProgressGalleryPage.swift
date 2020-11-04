@@ -35,7 +35,7 @@ struct ProgressGalleryPage: View {
                 }
                 Spacer()
             }
-        }
+        }.background(Color("backgroundColor"))
     }
 }
 

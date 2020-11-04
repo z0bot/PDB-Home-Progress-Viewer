@@ -17,17 +17,13 @@ struct ChangeOrderPage: View {
             NavigationLink(destination:
                             SignFormPage(form: forms[index])
             ) {
-                Text(forms[index].title + (forms[index].signed ? "sig" : "notsig"))
-            }.navigationBarHidden(true)
+                ChangeOrderPreviewView(form: forms[index])
+            }
             .padding([.top])
             
         }.layout {
             .grid()
-        }.overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.gray,
-                        lineWidth: 1)
-        )
+        }.background(Color("backgroundColor"))
     }
 }
 

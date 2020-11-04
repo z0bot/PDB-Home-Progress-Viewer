@@ -22,74 +22,19 @@ struct SignFormPage: View {
                     .font(Font.custom("Microsoft Tai Le", size: 23))
             }.padding([.leading, .top, .trailing])
             
-            HStack {
-                Text(form.description)
-                    .font(Font.custom("Microsoft Tai Le", size: 23))
                 
-                Spacer()
-            }.padding([.leading, .bottom, .trailing])
-            
-            HStack(alignment: .bottom) {
-                VStack {
-                    HStack {
-                        Spacer()
-                        Text("Previous")
-                            .bold()
+            HStack {
+                Image("ChangeOrderFormPreviewTemp")
+                    .resizable()
+                    .scaledToFit()
+                VStack(alignment: .leading) {
+                    Spacer()
+                        Text("Sign here")
                             .font(Font.custom("Microsoft Tai Le", size: 23))
                         
-                        Text("Update")
-                            .font(Font.custom("Microsoft Tai Le", size: 23))
-                            .bold()
-                    }
-                    HStack(alignment: .top) {
-                        Spacer()
-                        VStack(alignment: .leading) {
-                            Text("Item")
-                                .font(Font.custom("Microsoft Tai Le", size: 23))
-                                .bold()
+                        Image("signHereField")
                             
-                            Text("Item Price")
-                                .font(Font.custom("Microsoft Tai Le", size: 23))
-                                .bold()
-                            Text("House Estimate")
-                                .font(Font.custom("Microsoft Tai Le", size: 23))
-                                .bold()
-                        }
-                        VStack {
-
-                            
-                            Text(form.oldItem)
-                                .font(Font.custom("Microsoft Tai Le", size: 23))
-                            
-                            Text(ChangeOrderForm.FloatToDollars(num: form.oldItemPrice))
-                                .font(Font.custom("Microsoft Tai Le", size: 23))
-                            
-                            Text(ChangeOrderForm.FloatToDollars(num: form.oldTotalCost))
-                                .font(Font.custom("Microsoft Tai Le", size: 23))
-                            
-                            
-                        }
-                        VStack {
-                            
-                            Text(form.newItem)
-                                .font(Font.custom("Microsoft Tai Le", size: 23))
-                            
-                            Text(ChangeOrderForm.FloatToDollars(num: form.newItemPrice))
-                                .font(Font.custom("Microsoft Tai Le", size: 23))
-                            
-                            Text(ChangeOrderForm.FloatToDollars(num: form.newTotalCost))
-                                .font(Font.custom("Microsoft Tai Le", size: 23))
-                        }
-                    }
-                }.padding()
-                Spacer()
-                
-                VStack(alignment: .leading) {
-                    Text("Sign here")
-                        .font(Font.custom("Microsoft Tai Le", size: 23))
-                    
-                    Rectangle()
-                        .frame(width: 300, height: 120)
+                    Spacer()
                 }
             }.padding()
             
