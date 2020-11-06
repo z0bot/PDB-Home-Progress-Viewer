@@ -12,9 +12,12 @@ import FirebaseFirestore
 struct LoginPage: View{
     @State var userName: String = ""
     @State var password: String = ""
+    
+    @State var displayCreatePage = false
     @State var action: Bool = false
     @State var errorText: String = ""
     @State var showAlert: Bool = false
+    
     var body: some View {
         
         GeometryReader{ Geometry in
@@ -29,14 +32,17 @@ struct LoginPage: View{
                     Divider()
                     SecureField("Password", text: $password)
                     Divider()
-                    Button(action: CreateUser){
-                        Text("Create an account")
-                            .foregroundColor(Color("TextGreen"))
-                            .alert(isPresented: self.$showAlert, content: {
-                                    Alert(title: Text("Error Creating User"), message: Text(errorText),
-                                          dismissButton: .cancel(Text("Ok"))
-                                          )}
-                            )}.padding(10)
+                    
+                    Text("Create an account")
+                        .onTapGesture(count: 1, perform: {
+                            self.displayCreatePage.toggle()
+                        })
+                        .foregroundColor(Color("TextGreen"))
+                        .padding(10)
+                        .sheet(isPresented: $displayCreatePage, content: {
+                            CreateAccountPage(dismiss: $displayCreatePage, returnUserName: $userName)
+                        })
+                    
                     Spacer(minLength: 10)
                     Button(action: SubmitLogin){
                         Text("Login").padding([.top, .bottom], 12.0)
@@ -89,29 +95,5 @@ struct LoginPage: View{
                             }
                 action = true
             }
-        }
-        
-        func CreateUser()
-        {
-            Auth.auth().createUser(withEmail: userName, password: password) {user, error in
-                if let error = error
-                {
-                    self.errorText = error.localizedDescription
-                    showAlert = true
-                    self.password = ""
-                    return
-                }
-                
-                let db = Firestore.firestore()
-                db.collection("Users").addDocument(data: [
-                    "users_email": userName,
-                    "users_firstname": "Blake",
-                    "users_lastname": "Cocks2",
-                    "users_phone": "1234567890"
-                ])
-                action = true
-            }
-            
-           
         }
 }
