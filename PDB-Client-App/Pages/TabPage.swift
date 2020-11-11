@@ -13,7 +13,7 @@ struct TabPage: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            MessagePage(userID: UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!, messages: [Message(senderID: UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!, sender: "BC", text: "Hey", date: Date()), Message(senderID: UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5E")!, sender: "BC", text: "Hey 2 u", date: Date())])
+            MessagePage(userID: UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!, propertyID: UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!)
                 .tabItem {
                     if(selection == 0) {
                         Image("messageActive_Icon")
