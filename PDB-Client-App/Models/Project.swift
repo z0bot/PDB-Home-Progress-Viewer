@@ -9,6 +9,7 @@ import Foundation
 
 struct Project: Identifiable {
     var id = UUID()
+    public var builderEmail: String
     public var imageURL: String
     public var name: String
     public var address: String
@@ -27,12 +28,14 @@ struct Project: Identifiable {
         changeOrderForms = []
     }
     
-    init(imageURL: String, name: String, address: String, rooms: [Room], forms: [ChangeOrderForm]) {
+    init(email: String, imageURL: String, name: String, address: String, rooms: [Room], forms: [ChangeOrderForm]) {
+        self.builderEmail = email
         self.imageURL = imageURL
         self.name = name
         self.address = address
         self.rooms = rooms
         archived = false
         self.changeOrderForms = forms
+        
     }
 }
