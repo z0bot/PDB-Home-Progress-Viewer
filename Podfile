@@ -15,6 +15,7 @@ target 'PDB-Client-App' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 
   target 'PDB-Client-AppTests' do
     inherit! :search_paths
