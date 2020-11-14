@@ -22,7 +22,6 @@ struct MessagePage: View {
     @State var toSend: String = ""
     
     var body: some View {
-        
         VStack {
             ScrollView {
                 VStack {
@@ -55,11 +54,20 @@ struct MessagePage: View {
             }.flippedUpsideDown()
             
             if(inputImage != nil) {
-                Image(uiImage: inputImage!)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(10)
-                    .padding([.leading, .top, .trailing])
+                VStack {
+                    Text("Double tap image to remove")
+                        .foregroundColor(.gray)
+                        .font(Font.custom("Microsoft Tai Le", size: 14))
+                        .padding(.top)
+                    Image(uiImage: inputImage!)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(10)
+                        .padding([.leading, .trailing])
+                        .onTapGesture(count: 2, perform: {
+                            inputImage = nil
+                    })
+                }
             }
             
             HStack {
@@ -83,9 +91,6 @@ struct MessagePage: View {
                         SendMessage(text: toSend)
                         toSend = ""
                     }
-                    
-                    /*SendMessage(text: toSend)
-                    toSend = ""*/
                 })
                     .padding()
                     .background(Color.white)
@@ -137,6 +142,11 @@ struct MessagePage: View {
     }
     
     func SendMessage(text: String, mediaURL: String? = nil) {
+        // Don't upload empty messages
+        if(text == "" && mediaURL == nil) {
+            return
+        }
+        
         let message = Message(senderID: userID,
                               sender: "NotBen",
                               text: text,
