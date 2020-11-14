@@ -9,15 +9,15 @@ import SwiftUI
 import ASCollectionView
 
 struct ChangeOrderPage: View {
-    var forms: [ChangeOrderForm]
+    @Binding var project: Project
     
     var body: some View {
-        ASCollectionView(data: forms.indices, dataID: \.self) { index,arg  in
+        ASCollectionView(data: project.changeOrderForms!.indices, dataID: \.self) { index,arg  in
             
             NavigationLink(destination:
-                            SignFormPage(form: forms[index])
+                            SignFormPage(form: (project.changeOrderForms?[index])!)
             ) {
-                ChangeOrderPreviewView(form: forms[index])
+                ChangeOrderPreviewView(form: (project.changeOrderForms?[index])!)
             }
             .padding([.top])
             
@@ -27,9 +27,9 @@ struct ChangeOrderPage: View {
     }
 }
 
-struct ChangeOrderPage_Previews: PreviewProvider {
+/*struct ChangeOrderPage_Previews: PreviewProvider {
     static var formsArr = [ChangeOrderForm(title: "Marble Counter", description: "Changing counter to marble")]
     static var previews: some View {
-        ChangeOrderPage(forms: formsArr)
+        ChangeOrderPage(forms: forms)
     }
-}
+}*/

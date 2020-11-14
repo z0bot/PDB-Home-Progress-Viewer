@@ -25,8 +25,8 @@ struct ImagePreviewView: View {
     }
 }
 
-struct ImagePreviewView_Previews: PreviewProvider {
+/*struct ImagePreviewView_Previews: PreviewProvider {
     static var previews: some View {
-        ImagePreviewView(image: ImageModel(imageData: "", date: Date()))
+        ImagePreviewView(image: ImageModel, date: Date())
     }
-}
+}*/

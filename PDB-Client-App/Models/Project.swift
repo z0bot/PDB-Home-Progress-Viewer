@@ -14,28 +14,18 @@ struct Project: Identifiable {
     public var name: String
     public var address: String
     public var archived: Bool
-    public var rooms: [Room]
-    public var changeOrderForms: [ChangeOrderForm]
+    public var rooms: [Room]?
+    public var docId: String
+    public var changeOrderForms: [ChangeOrderForm]?
     
     //static let `default` = Self(imageURL: "", name: "2020 Bernie St.", address: "2020 Bernie St.")
     
-    init(imageURL: String, name: String, address: String) {
-        self.imageURL = imageURL
-        self.name = name
-        self.address = address
-        rooms = []
-        archived = false
-        changeOrderForms = []
-    }
-    
-    init(email: String, imageURL: String, name: String, address: String, rooms: [Room], forms: [ChangeOrderForm]) {
+    init(email: String, imageURL: String, name: String, address: String, docId: String) {
         self.builderEmail = email
         self.imageURL = imageURL
         self.name = name
         self.address = address
-        self.rooms = rooms
-        archived = false
-        self.changeOrderForms = forms
-        
+        self.docId = docId
+        self.archived = false
     }
 }

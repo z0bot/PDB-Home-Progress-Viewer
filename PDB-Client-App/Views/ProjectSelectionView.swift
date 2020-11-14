@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProjectSelectionView: View {
+    
     var project: Project
     
     var body: some View {
@@ -26,8 +27,8 @@ struct ProjectSelectionView: View {
     }
 }
 
-struct ProjectSelectionView_Previews: PreviewProvider {
+/*struct ProjectSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         ProjectSelectionView(project: Project(imageURL: "", name: "Bernie St.", address: ""))
     }
-}
+}*/

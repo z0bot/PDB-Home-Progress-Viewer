@@ -9,10 +9,10 @@ import SwiftUI
 import Combine
 import ASCollectionView
 
+
 struct HomePage: View {
     // If we need to pass in this data later, use @EnvironmentObject instead of @ObservedObject
     @ObservedObject var viewModel = HomePageVM()
-    
     /*private var cols: [GridItem] = [
         GridItem(.flexible(), spacing: 20),
         GridItem(.flexible(), spacing: 20)
@@ -36,18 +36,18 @@ struct HomePage: View {
                 Image("plus")
                     .gesture(TapGesture().onEnded({
                         //TODO: Add functionality for adding a new property
-                        viewModel.projects.append(Project(imageURL: "", name: "newProj", address: "aaa"))
+                        //viewModel.projects.append(Project(imageURL: "", name: "newProj", address: "aaa"))
                     }))
             }.padding()
             
             //ScrollView {
                 
-                ASCollectionView(data: viewModel.projects) { project,arg  in
-                    
-                    NavigationLink(destination:
-                                    TabPage(project: project)
+            ASCollectionView(data: viewModel.Projects.indices, dataID: \.self) { index,RandomAccessCollection in
+                
+                NavigationLink(destination:
+                                TabPage(project: $viewModel.Projects[index])
                     ) {
-                        ProjectSelectionView(project: project)
+                    ProjectSelectionView(project: viewModel.Projects[index])
                     }.navigationBarHidden(true)
                     .padding([.top])
                     
@@ -102,6 +102,9 @@ struct HomePage: View {
             }
             .padding()
             .frame(alignment: .leading)
+        }.onAppear(){
+            self.viewModel.getData()
+            
         }
     }
 }

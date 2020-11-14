@@ -8,7 +8,10 @@
 import Foundation
 
 struct Room: Identifiable {
+    
     var id = UUID()
-    var images: [ImageModel]
+    var images: [ImageModel]?
     var name: String
+    var docId: String
+    //var projectId: String
 }

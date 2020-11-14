@@ -9,7 +9,7 @@ import Foundation
 
 struct ImageModel: Identifiable {
     var id = UUID()
-    var imageData: String
+    var imageURL: String
     var date: Date
     
     func DateString() -> String {
