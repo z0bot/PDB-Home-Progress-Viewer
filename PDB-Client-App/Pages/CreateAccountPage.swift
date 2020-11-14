@@ -53,7 +53,13 @@ struct CreateAccountPage: View {
                     Divider()
                     
                     HStack {
-                        Image("email")
+                        ZStack {
+                            Image("phone")
+                                .resizable()
+                                .opacity(0.0999)
+                            Color("IconColor").blendMode(.colorBurn)
+                        }
+                        .frame(width: 30, height: 31, alignment: .center)
                         TextField("Phone Number", text: $phone)
                             .padding([.leading])
                     }

@@ -61,15 +61,10 @@ struct LoginPage: View{
                 }
                 .padding(.top, -5.0)
                 .padding([.leading, .bottom, .trailing], 50.0)
-                
-                
-            
-                
-                
             
             VStack(alignment: .center){
                 NavigationLink(destination: HomePage(),
-                               isActive: $action){}
+                               isActive: $action){}.navigationBarHidden(true)
                 Image("triangle")
                     .resizable()
                     .scaledToFit()
