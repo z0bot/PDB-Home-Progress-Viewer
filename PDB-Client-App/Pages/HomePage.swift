@@ -8,7 +8,8 @@
 import SwiftUI
 import Combine
 import ASCollectionView
-
+import FirebaseFirestore
+import Firebase
 
 struct HomePage: View {
     // If we need to pass in this data later, use @EnvironmentObject instead of @ObservedObject
@@ -17,7 +18,8 @@ struct HomePage: View {
         GridItem(.flexible(), spacing: 20),
         GridItem(.flexible(), spacing: 20)
     ]*/
-    
+    private var db = Firestore.firestore()
+
     var body: some View {
         VStack {
             Image("PDBLogo")
@@ -43,14 +45,13 @@ struct HomePage: View {
             //ScrollView {
                 
             ASCollectionView(data: viewModel.Projects.indices, dataID: \.self) { index,RandomAccessCollection in
-                
                 NavigationLink(destination:
                                 TabPage(project: $viewModel.Projects[index])
-                    ) {
+                ) {
                     ProjectSelectionView(project: viewModel.Projects[index])
-                    }.navigationBarHidden(true)
-                    .padding([.top])
-                    
+                }.navigationBarHidden(true)
+                 .padding([.top])
+   
                 }.layout {
                     .grid()
                 }.overlay(
@@ -107,6 +108,7 @@ struct HomePage: View {
             
         }
     }
+   
 }
 
 

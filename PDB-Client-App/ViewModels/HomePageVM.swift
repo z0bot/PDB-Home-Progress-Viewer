@@ -35,27 +35,40 @@ class HomePageVM: ObservableObject {
                         let form = document.data()["changeOrderForm"] as? ChangeOrderForm ?? nil
                         
                         self.Projects.append(Project(email: builderEmail, imageURL: imageURL, name: name, address: address, docId: document.documentID))
+                    
+                            
                     }
+                
                     
             }
         
     }
     
-    func getRooms(p: Project, i: Int)
+    func getRooms(pId: String)
     {
-            let roomQuery = db.collection("Projects").document(p.docId).collection("Rooms")
-            roomQuery.getDocuments{ QuerySnapshot, error in
+            let roomQuery = db.collection("Projects").document(pId).collection("Rooms")
+            roomQuery.getDocuments
+            { QuerySnapshot, error in
                 if let error = error{}
                 else
                 {
                     for document in QuerySnapshot!.documents
                         {
                             let name = document.data()["name"] as? String ?? ""
-                            self.Projects[i].rooms?.append(Room(name: name, docId: document.documentID))
+                            var i = 0
+                            for p in self.Projects
+                            {
+                                if p.docId == pId
+                                {
+                                    self.Projects[i].rooms?.append(Room(name: name, docId: document.documentID))
+                                }
+                                i = i + 1
+                            }
                         }
-                }
+                  }
+            }
         }
-    }
+    
     
     
     func getImages()

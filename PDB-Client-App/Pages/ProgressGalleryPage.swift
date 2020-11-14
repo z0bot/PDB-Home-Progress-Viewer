@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+import Firebase
 
 struct ProgressGalleryPage: View {
     @Binding var project: Project
+    var db = Firestore.firestore()
     
     var body: some View {
         ScrollView {
@@ -32,8 +35,28 @@ struct ProgressGalleryPage: View {
                     }
                 }
                 Spacer()
-            }
+            }.onAppear(){self.getRooms(pId: self.project.docId)}
         }.background(Color("backgroundColor"))
+        
+    }
+    
+
+
+    func getRooms(pId: String)
+    {
+        let roomQuery = db.collection("Projects").document(pId).collection("Rooms")
+        roomQuery.getDocuments
+        { QuerySnapshot, error in
+            if let error = error{}
+            else
+            {
+                for document in QuerySnapshot!.documents
+                    {
+                        let name = document.data()["name"] as? String ?? ""
+                        self.project.rooms?.append(Room(name: name, docId: document.documentID))
+                    }
+              }
+          }
     }
 }
 
