@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseStorage
 
 struct ImagePreviewView: View {
     var image: ImageModel
     var body: some View {
+        
         VStack(spacing: .none) {
             Image("HouseTemp")
                 .resizable()
@@ -23,10 +26,12 @@ struct ImagePreviewView: View {
                 .padding(.top, -70.0)
         }
     }
+    
+    
 }
 
-struct ImagePreviewView_Previews: PreviewProvider {
+/*struct ImagePreviewView_Previews: PreviewProvider {
     static var previews: some View {
         ImagePreviewView(image: ImageModel(imageData: "", date: Date()))
     }
-}
+}*/

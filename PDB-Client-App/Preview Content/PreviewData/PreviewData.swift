@@ -8,8 +8,8 @@
 import Foundation
 
 public class PreviewData {
-    @Published var previewProject: Project = Project(imageURL: "", name: "Bernie St.", address: "")
+   /* @Published var previewProject: Project = Project(imageURL: "", name: "Bernie St.", address: "")
     
-    @Published var previewClient: Client = Client(name: "Big Daddy", phoneNumber: "555-555-5555", emailAddress: "big@daddy.com")
+    @Published var previewClient: Client = Client(name: "Big Daddy", phoneNumber: "555-555-5555", emailAddress: "big@daddy.com")*/
 }
 

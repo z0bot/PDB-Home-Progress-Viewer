@@ -36,7 +36,7 @@ struct HomePage: View {
                 Image("plus")
                     .gesture(TapGesture().onEnded({
                         //TODO: Add functionality for adding a new property
-                        viewModel.projects.append(Project(imageURL: "", name: "newProj", address: "aaa"))
+                        viewModel.projects.append(Project(imageURL: viewModel.projects[0].imageURL, name: "newProj", address: "aaa"))
                     }))
             }.padding()
             
@@ -102,7 +102,7 @@ struct HomePage: View {
             }
             .padding()
             .frame(alignment: .leading)
-        }
+        }.onAppear(){self.viewModel.getProjects()}
     }
 }
 
