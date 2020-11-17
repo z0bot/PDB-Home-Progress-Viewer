@@ -24,7 +24,7 @@ class HomePageVM: ObservableObject {
                 
                 let name = document.data()["name"] as? String ?? ""
                 let builderEmail = document.data()["builderEmail"] as? String ?? ""
-                let imageURL = document.data()["imageURL"] as? String ?? "No Image"
+                let imageURL = document.data()["imageURL"] as? String ?? "https://firebasestorage.googleapis.com/v0/b/pd-builders.appspot.com/o/testProject%2FPDB%20(2).jpg?alt=media&token=b2cacd69-40ca-4ea4-869c-635d1b500743"
                 let address = document.data()["address"] as? String ?? ""
                 let archived = document.data()["archived"] as? Bool ?? false
                 let id = document.documentID
@@ -79,22 +79,7 @@ class HomePageVM: ObservableObject {
         })
         completion(images)
     }
-    
-    func getURL(gsRef: String, completion: @escaping ((URL) -> ()))
-    {
-        var imageURL = URL(string: "www.JADAT.com")
-        let imageRef = Storage.storage().reference(forURL: gsRef)
-        imageRef.downloadURL(completion:
-            { url, error in
-            
-                if let _url = url{
-                    imageURL = _url
-                    completion(imageURL!)
-            }
-                
-        
-    })
-}
+
 }
     //TODO: Pull these from the logged in user
     /*@Published var projects = [

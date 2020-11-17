@@ -36,7 +36,7 @@ struct HomePage: View {
                 Image("plus")
                     .gesture(TapGesture().onEnded({
                         //TODO: Add functionality for adding a new property
-                        viewModel.projects.append(Project(imageURL: viewModel.projects[0].imageURL, name: "newProj", address: "aaa"))
+                        viewModel.projects.append(Project(imageURL: "https://firebasestorage.googleapis.com/v0/b/pd-builders.appspot.com/o/testProject%2FPDB%20(2).jpg?alt=media&token=b2cacd69-40ca-4ea4-869c-635d1b500743", name: "newProj", address: "aaa"))
                     }))
             }.padding()
             
