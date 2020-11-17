@@ -10,7 +10,7 @@ import Firebase
 
 struct Message: Identifiable {
     var id = UUID()
-    var senderID: UUID
+    var senderID: String
     var sender: String
     var text: String
     var date: Date
@@ -18,7 +18,7 @@ struct Message: Identifiable {
     var dictionary: [String: Any] {
         if(mediaURL == nil) {
             return [
-                "senderID": senderID.uuidString,
+                "senderID": senderID,
                 "sender": sender,
                 "text": text,
                 "date": date.ToString()
@@ -26,7 +26,7 @@ struct Message: Identifiable {
         }
         else {
             return [
-                "senderID": senderID.uuidString,
+                "senderID": senderID,
                 "sender": sender,
                 "text": text,
                 "date": date.ToString(),
@@ -35,7 +35,7 @@ struct Message: Identifiable {
         }
     }
     
-    init(senderID: UUID, sender: String, text: String, date: Date, mediaURL: String? = nil) {
+    init(senderID: String, sender: String, text: String, date: Date, mediaURL: String? = nil) {
         self.sender = sender
         self.senderID = senderID
         self.text = text
@@ -44,8 +44,7 @@ struct Message: Identifiable {
     }
     
     init(dictionary: [String : AnyObject]) {
-        let idStr = dictionary["senderID"] as! String
-        self.senderID = UUID.init(uuidString: idStr)!
+        self.senderID = dictionary["senderID"] as! String
         self.sender = dictionary["sender"] as! String
         self.text = dictionary["text"] as! String
         let dateStr = dictionary["date"] as! String

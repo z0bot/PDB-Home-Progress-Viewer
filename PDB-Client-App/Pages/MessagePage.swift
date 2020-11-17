@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 import Firebase
 import FirebaseStorage
 
@@ -16,8 +17,10 @@ struct MessagePage: View {
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     
-    var userID: UUID
-    var propertyID: UUID
+    var userID: String
+    var propertyID: String
+    var name: String
+    
     @State var messages: [Message] = []
     @State var toSend: String = ""
     
@@ -26,7 +29,8 @@ struct MessagePage: View {
             ScrollView {
                 VStack {
                     Spacer()
-                    ForEach(messages.indices) { messageInd in
+                    // This code works on some devices to display the messages without names if they are from the same sender, but it does not yet work well enough to use at the moment
+                    /*ForEach(messages.indices) { messageInd in
                         HStack {
                             if(messageInd < messages.count && messageInd >= 0) {
                                 if(messages[messageInd].senderID == userID) {
@@ -48,8 +52,22 @@ struct MessagePage: View {
                                     }
                                 }
                             }
+                        }*/
+                        ForEach(messages) { message in
+                            HStack {
+                                if(message.senderID == userID) {
+                                    Spacer()
+                                    MessageView(message: message, displayName: false, colored: true)
+                                        .padding([.leading, .trailing])
+                                }
+                                else {
+                                // Do not display name if previous message came from same sender
+                                    MessageView(message: message, displayName: true)
+                                        .padding([.leading, .trailing])
+                                    Spacer()
+                                }
+                            }
                         }
-                    }
                 }.flippedUpsideDown()
             }.flippedUpsideDown()
             
@@ -73,7 +91,25 @@ struct MessagePage: View {
             HStack {
                 Image("cameraGray_Icon")
                     .onTapGesture(count: 1, perform: {
-                        self.showingImagePicker = true
+                        switch AVCaptureDevice.authorizationStatus(for: .video) {
+                            case .authorized: // The user has previously granted access to the camera.
+                                self.showingImagePicker = true
+                            
+                            case .notDetermined: // The user has not yet been asked for camera access.
+                                AVCaptureDevice.requestAccess(for: .video) { granted in
+                                    if granted {
+                                        self.showingImagePicker = true
+                                    }
+                                }
+                            
+                            case .denied: // The user has previously denied access.
+                                return
+
+                            case .restricted: // The user can't grant access due to restrictions.
+                                return
+                        @unknown default:
+                            fatalError()
+                        }
                     })
                 TextField("Send Message", text: $toSend, onCommit: {
                     var mediaURL = ""
@@ -101,11 +137,11 @@ struct MessagePage: View {
                     )
             }.padding()
         }.background(Color("backgroundColor"))
-        .onAppear {
+        .onLoad {
             ref = Database.database()
                 .reference().child("messaging")
                 .child("projects")
-                .child(propertyID.uuidString)
+                .child(propertyID)
             
             self.messages = []
             
@@ -125,6 +161,7 @@ struct MessagePage: View {
         }
         .onDisappear {
             ref.removeObserver(withHandle: postHandle)
+            //ref.removeAllObservers()
         }
         .sheet(isPresented: $showingImagePicker/*, onDismiss: loadImage*/) {
             ImagePicker(image: self.$inputImage)
@@ -136,9 +173,10 @@ struct MessagePage: View {
         
     }*/
     
-    init(userID: UUID, propertyID: UUID) {
-        self.userID = userID
+    init(propertyID: String) {
+        self.userID = (Auth.auth().currentUser?.email)!
         self.propertyID = propertyID
+        self.name = Auth.auth().currentUser?.displayName ?? "Unknown name"
     }
     
     func SendMessage(text: String, mediaURL: String? = nil) {
@@ -148,12 +186,30 @@ struct MessagePage: View {
         }
         
         let message = Message(senderID: userID,
-                              sender: "NotBen",
-                              text: text,
-                              date: Date(),
-                              mediaURL: mediaURL)
+                                  sender: name,
+                                  text: text,
+                                  date: Date(),
+                                  mediaURL: mediaURL)
+            
+        ref.childByAutoId().setValue(message.dictionary)
+    }
+    
+    func getFirstName(email: String, completion:@escaping ((String) -> ())) {
+        var db = Firestore.firestore().collection("Users")
         
-        ref.child(message.id.uuidString).setValue(message.dictionary)
+        let query = db.whereField("users_email", isEqualTo: email)
+        
+        query.getDocuments { QuerySnapshot, error in
+            var user = QuerySnapshot!.documents[0]
+            
+            let name = user.data()["users_firstname"] as? String
+            if(name != nil) {
+                completion(name!)
+            }
+            else {
+                completion("")
+            }
+        }
     }
     
     func UploadImage(image: UIImage, completion:@escaping((String) -> ())) {
@@ -170,7 +226,7 @@ struct MessagePage: View {
         
         metadata.contentType = "image/jpg"
         
-        storageRef = storageRef.child("messageData/" + propertyID.uuidString)
+        storageRef = storageRef.child("messageData/" + propertyID)
         
         let imageName = [UUID().uuidString, String(Date().timeIntervalSince1970)].joined()
         
@@ -203,10 +259,21 @@ extension View{
    func flippedUpsideDown() -> some View{
      self.modifier(FlippedUpsideDown())
    }
+    
+    func onLoad(perform action: (() -> Void)? = nil) -> some View {
+            var actionPerformed = false
+            return self.onAppear {
+                guard !actionPerformed else {
+                    return
+                }
+                actionPerformed = true
+                action?()
+            }
+        }
 }
 
 struct MessagePage_Previews: PreviewProvider {
     static var previews: some View {
-        MessagePage(userID: UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!, propertyID: UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!)
+        MessagePage(propertyID:  "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")
     }
 }

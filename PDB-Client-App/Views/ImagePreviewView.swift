@@ -15,11 +15,12 @@ struct ImagePreviewView: View {
                 .resizable()
                 .cornerRadius(20)
                 .scaledToFit()
+                .opacity(0.5)
             
             Text(image.DateString())
                 .font(Font.custom("Microsoft Tai Le", size: 23))
                 .bold()
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .padding(.top, -70.0)
         }
     }

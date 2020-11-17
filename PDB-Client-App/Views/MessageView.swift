@@ -40,6 +40,6 @@ struct MessageView: View {
 
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageView(message: Message(senderID: UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!, sender: "BC", text: "Hey", date: Date()), displayName: true, colored: true)
+        MessageView(message: Message(senderID: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F", sender: "BC", text: "Hey", date: Date()), displayName: true, colored: true)
     }
 }
