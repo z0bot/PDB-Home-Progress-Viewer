@@ -23,7 +23,7 @@ struct ProgressGalleryPage: View {
                             ForEach(room.images) { image in
                               
                                 
-                                NavigationLink(destination: Text(image.imageData)) {
+                                NavigationLink(destination: Text(image.texty)) {
                                     ImagePreviewView(image: image)
                                         .frame(width: 150)
                                         .padding([.leading,.trailing], 2.0)
@@ -39,11 +39,11 @@ struct ProgressGalleryPage: View {
     }
 }
 
-struct ProgressGalleryPage_Previews: PreviewProvider {
+/*struct ProgressGalleryPage_Previews: PreviewProvider {
     static var previews: some View {
         ProgressGalleryPage(rooms: [Room(images: [ImageModel(imageData: "This is an image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is yet another image", date: Date(timeIntervalSinceNow: 0))], name: "Foyer"),
             Room(images: [ImageModel(imageData: "This is an image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is yet another image", date: Date(timeIntervalSinceNow: 0)),
                           ImageModel(imageData: "This is an image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is yet another image", date: Date(timeIntervalSinceNow: 0))], name: "Dining Room"),
         ])
     }
-}
+}*/
