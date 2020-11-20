@@ -32,7 +32,9 @@ class HomePageVM: ObservableObject {
                 self.getRooms(id: id)
                     { rooms in
                         
-                        self.projects.append((Project(builderEmail: builderEmail, imageURL: imageURL, name: name, address: address, archived: archived, rooms: rooms, docId: id)))
+                        self.getForms(id: id) { forms in
+                            self.projects.append((Project(builderEmail: builderEmail, imageURL: imageURL, name: name, address: address, archived: archived, rooms: rooms, forms: forms, docId: id)))
+                        }
                     }
                 
                 
@@ -74,13 +76,36 @@ class HomePageVM: ObservableObject {
                     images.append(ImageModel(id: UUID(), imageURL: imageRef, date: Date(timeIntervalSinceNow: 0)))
                     
                 }
-                
-            
         })
         completion(images)
     }
 
+    func getForms(id: String, completion:@escaping ((([ChangeOrderForm]) -> ()))) {
+        var forms = [ChangeOrderForm]()
+        
+        self.db.document(id).collection("Forms").getDocuments(completion:
+        {
+            QuerySnapshot, error in
+     
+                for document in QuerySnapshot!.documents
+                {
+                    let fireID = document.documentID
+                    let title = document.data()["title"] as? String ?? ""
+                    let dateStr = document.data()["date"] as? String ?? ""
+                    let date = Date.String(from: dateStr)
+                    
+                    let formHTML = document.data()["html"] as? String ?? ""
+                    let signed = document.data()["signed"] as? Bool ?? false
+                    forms.append(ChangeOrderForm(fireID: fireID, title: title, date: date, htmlData: formHTML, signed: signed))
+                    
+                }
+            completion(forms)
+            
+        })
+    }
 }
+
+
     //TODO: Pull these from the logged in user
     /*@Published var projects = [
         Project(imageURL: "", name: "Proj1", address: "addr1", rooms: [Room(images: [ImageModel(imageData: "This is an image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is another image", date: Date(timeIntervalSinceNow: 0)), ImageModel(imageData: "This is yet another image", date: Date(timeIntervalSinceNow: 0)),

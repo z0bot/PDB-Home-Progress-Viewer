@@ -9,62 +9,32 @@ import Foundation
 
 struct ChangeOrderForm: Identifiable {
     var id = UUID()
+    var fireID: String
     
     var title: String
-    var description: String
     var date: Date
-    
-    func dateString() -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        return formatter.string(from: date)
+    func dateStr() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        return dateFormatter.string(from: date)
     }
-    
-    static func FloatToDollars(num: Float) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        return formatter.string(from: NSNumber(value: num))!
-    }
-    
-    var oldItem: String
-    var newItem: String
-    
-    var oldItemPrice: Float
-    var newItemPrice: Float
-    
-    var oldTotalCost: Float
-    var newTotalCost: Float
     
     var signed: Bool
-    var sigData: [Float]
+    var htmlData: String
     
-    init(title: String, description: String) {
+    init(title: String) {
         self.title = title
-        self.description = description
+        fireID = ""
         date = Date()
-        oldItem = "OldItem"
-        newItem = "NewItem"
-        oldItemPrice = 0
-        newItemPrice = 1
-        oldTotalCost = 1
-        newTotalCost = 1
-        
+        htmlData = "<html><body><p>This is an example of a simple HTML page with one paragraph. It comes from a hardcoded variable</p></body> </html>"
         signed = false
-        sigData = []
     }
     
-    init(title: String, description: String, date: Date, oldItem: String, newItem: String, oldItemPrice: Float, newItemPrice: Float, oldTotal: Float, newTotal: Float) {
+    init(fireID: String, title: String, date: Date, htmlData: String, signed: Bool) {
+        self.fireID = fireID
         self.title = title
-        self.description = description
         self.date = date
-        self.oldItem = oldItem
-        self.newItem = newItem
-        self.oldItemPrice = oldItemPrice
-        self.newItemPrice = newItemPrice
-        self.oldTotalCost = oldTotal
-        self.newTotalCost = newTotal
-        
-        signed = false
-        sigData = []
+        self.htmlData = htmlData
+        self.signed = signed
     }
 }

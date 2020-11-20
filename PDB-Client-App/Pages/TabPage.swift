@@ -13,7 +13,7 @@ struct TabPage: View {
     var body: some View {
         
         TabView(selection: $selection) {
-            MessagePage(propertyID:  "CrossTest")
+            MessagePage(propertyID:  project.docId)
                 .tabItem {
                     if(selection == 0) {
                         Image("messageActive_Icon")
@@ -33,7 +33,7 @@ struct TabPage: View {
                         Image("gallery_Icon")
                     }
                 }.tag(1)
-            ChangeOrderPage(forms: project.changeOrderForms)
+            ChangeOrderPage(forms: project.changeOrderForms, projectID: project.docId)
                 .tabItem {
                     if(selection == 2) {
                         Image("fileActive_Icon")

@@ -26,6 +26,6 @@ struct ChangeOrderPreviewView: View {
 
 struct ChangeOrderPreviewView_Previews: PreviewProvider {
     static var previews: some View {
-        ChangeOrderPreviewView(form: ChangeOrderForm(title: "A form", description: "A description"))
+        ChangeOrderPreviewView(form: ChangeOrderForm(title: "A form"))
     }
 }
