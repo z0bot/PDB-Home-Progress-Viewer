@@ -80,6 +80,8 @@ struct LoginPage: View{
 }
         func SubmitLogin()
         {
+            
+            
             Auth.auth().signIn(withEmail: userName, password: password) {user, error in
                 if let error = error
                             {

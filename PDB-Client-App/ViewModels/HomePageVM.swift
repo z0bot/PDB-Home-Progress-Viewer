@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 import Firebase
 import FirebaseFirestore
+import FirebaseUI
 
 class HomePageVM: ObservableObject {
     @Published var projects = [Project]()
@@ -83,10 +84,13 @@ class HomePageVM: ObservableObject {
     func getForms(id: String, completion:@escaping ((([ChangeOrderForm]) -> ()))) {
         var forms = [ChangeOrderForm]()
         
+        var query = Firestore.firestore().document(id).collection("Forms")
+        
+        //FirebaseUI stuff here
+        
         self.db.document(id).collection("Forms").getDocuments(completion:
         {
             QuerySnapshot, error in
-     
                 for document in QuerySnapshot!.documents
                 {
                     let fireID = document.documentID

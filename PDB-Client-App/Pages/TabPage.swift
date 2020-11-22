@@ -7,6 +7,8 @@
 
 import SwiftUI
 import FirebaseFirestore
+import FirebaseUI	
+
 struct TabPage: View {
         var project: Project
         @State private var selection = 1

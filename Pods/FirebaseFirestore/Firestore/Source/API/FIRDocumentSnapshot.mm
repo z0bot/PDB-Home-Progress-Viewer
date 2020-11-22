@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Google LLC
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -204,7 +204,10 @@ ServerTimestampBehavior InternalServerTimestampBehavior(FIRServerTimestampBehavi
 
 - (FieldValueOptions)optionsForServerTimestampBehavior:
     (FIRServerTimestampBehavior)serverTimestampBehavior {
-  return FieldValueOptions(InternalServerTimestampBehavior(serverTimestampBehavior));
+  SUPPRESS_DEPRECATED_DECLARATIONS_BEGIN()
+  return FieldValueOptions(InternalServerTimestampBehavior(serverTimestampBehavior),
+                           _snapshot.firestore()->settings().timestamps_in_snapshots_enabled());
+  SUPPRESS_END()
 }
 
 - (id)convertedValue:(FieldValue)value options:(const FieldValueOptions &)options {
@@ -218,7 +221,7 @@ ServerTimestampBehavior InternalServerTimestampBehavior(FIRServerTimestampBehavi
     case FieldValue::Type::Double:
       return @(value.double_value());
     case FieldValue::Type::Timestamp:
-      return [self convertedTimestamp:value];
+      return [self convertedTimestamp:value options:options];
     case FieldValue::Type::ServerTimestamp:
       return [self convertedServerTimestamp:value options:options];
     case FieldValue::Type::String:
@@ -238,8 +241,13 @@ ServerTimestampBehavior InternalServerTimestampBehavior(FIRServerTimestampBehavi
   UNREACHABLE();
 }
 
-- (id)convertedTimestamp:(const FieldValue &)value {
-  return MakeFIRTimestamp(value.timestamp_value());
+- (id)convertedTimestamp:(const FieldValue &)value options:(const FieldValueOptions &)options {
+  FIRTimestamp *wrapped = MakeFIRTimestamp(value.timestamp_value());
+  if (options.timestamps_in_snapshots_enabled()) {
+    return wrapped;
+  } else {
+    return [wrapped dateValue];
+  }
 }
 
 - (id)convertedServerTimestamp:(const FieldValue &)value
@@ -250,7 +258,7 @@ ServerTimestampBehavior InternalServerTimestampBehavior(FIRServerTimestampBehavi
       return [NSNull null];
     case ServerTimestampBehavior::kEstimate: {
       FieldValue local_write_time = FieldValue::FromTimestamp(sts.local_write_time());
-      return [self convertedTimestamp:local_write_time];
+      return [self convertedTimestamp:local_write_time options:options];
     }
     case ServerTimestampBehavior::kPrevious:
       return sts.previous_value() ? [self convertedValue:*sts.previous_value() options:options]

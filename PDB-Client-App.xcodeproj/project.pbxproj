@@ -16,8 +16,8 @@
 		9733A5352547BED600DEC9AD /* ImagePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733A5342547BED600DEC9AD /* ImagePreviewView.swift */; };
 		9733DF33254DE29400710880 /* ChangeOrderPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733DF32254DE29400710880 /* ChangeOrderPreviewView.swift */; };
 		9733DF37254DE50400710880 /* SignFormPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733DF36254DE50400710880 /* SignFormPage.swift */; };
-		9733E969254CA9BF00034689 /* ASCollectionViewDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 9733E968254CA9BF00034689 /* ASCollectionViewDynamic */; };
-		9733E96A254CA9BF00034689 /* ASCollectionViewDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9733E968254CA9BF00034689 /* ASCollectionViewDynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		9733E969254CA9BF00034689 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 9733E968254CA9BF00034689 /* SwiftPackageProductDependency */; };
+		9733E96A254CA9BF00034689 /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9733E968254CA9BF00034689 /* SwiftPackageProductDependency */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9733E976254CC65A00034689 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9733E975254CC65A00034689 /* Launch Screen.storyboard */; };
 		9733E97C254CDA6100034689 /* ChangeOrderPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733E97B254CDA6100034689 /* ChangeOrderPage.swift */; };
 		9733E980254CDB0A00034689 /* ChangeOrderForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733E97F254CDB0A00034689 /* ChangeOrderForm.swift */; };
@@ -25,7 +25,7 @@
 		9734399525523D3D006A3865 /* MessagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734399425523D3D006A3865 /* MessagePage.swift */; };
 		97343999255243E0006A3865 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97343998255243E0006A3865 /* MessageView.swift */; };
 		9734399D255243F2006A3865 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734399C255243F2006A3865 /* Message.swift */; };
-		9735E1C5255F3B3800FF726D /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9735E1C4255F3B3800FF726D /* URLImage */; };
+		9735E1C5255F3B3800FF726D /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 9735E1C4255F3B3800FF726D /* SwiftPackageProductDependency */; };
 		973630272544D353009796F1 /* AppDelegateOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973630262544D353009796F1 /* AppDelegateOLD.swift */; };
 		9736E8D625547518004780AC /* CreateAccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736E8D525547518004780AC /* CreateAccountPage.swift */; };
 		973713902543A96100D11590 /* ProjectSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9737138F2543A96100D11590 /* ProjectSelectionView.swift */; };
@@ -74,7 +74,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9733E96A254CA9BF00034689 /* ASCollectionViewDynamic in Embed Frameworks */,
+				9733E96A254CA9BF00034689 /* BuildFile in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,8 +140,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F40005956470C5511D9EC023 /* Pods_PDB_Client_App.framework in Frameworks */,
-				9735E1C5255F3B3800FF726D /* URLImage in Frameworks */,
-				9733E969254CA9BF00034689 /* ASCollectionViewDynamic in Frameworks */,
+				9735E1C5255F3B3800FF726D /* BuildFile in Frameworks */,
+				9733E969254CA9BF00034689 /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +329,7 @@
 				973D8D502541EEAF00FEBB7C /* Resources */,
 				B10467A120C692CB19584AAE /* [CP] Embed Pods Frameworks */,
 				9733E942254CA69E00034689 /* Embed Frameworks */,
+				DF0E36D86500D8ADA7DAF4DA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -336,8 +337,8 @@
 			);
 			name = "PDB-Client-App";
 			packageProductDependencies = (
-				9733E968254CA9BF00034689 /* ASCollectionViewDynamic */,
-				9735E1C4255F3B3800FF726D /* URLImage */,
+				9733E968254CA9BF00034689 /* SwiftPackageProductDependency */,
+				9735E1C4255F3B3800FF726D /* SwiftPackageProductDependency */,
 			);
 			productName = "PDB-Client-App";
 			productReference = 973D8D522541EEAF00FEBB7C /* PDB-Client-App.app */;
@@ -371,6 +372,7 @@
 				973D8D6B2541EEB100FEBB7C /* Frameworks */,
 				973D8D6C2541EEB100FEBB7C /* Resources */,
 				2AD3C6954F19336FBC7819E0 /* [CP] Embed Pods Frameworks */,
+				D6D521FF5CEFBFD5C85CC3E7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -414,8 +416,8 @@
 			);
 			mainGroup = 973D8D492541EEAF00FEBB7C;
 			packageReferences = (
-				9733E967254CA9BF00034689 /* XCRemoteSwiftPackageReference "ASCollectionView" */,
-				9735E1C3255F3B3800FF726D /* XCRemoteSwiftPackageReference "url-image" */,
+				9733E967254CA9BF00034689 /* RemoteSwiftPackageReference */,
+				9735E1C3255F3B3800FF726D /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 973D8D532541EEAF00FEBB7C /* Products */;
 			projectDirPath = "";
@@ -533,6 +535,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PDB-Client-App/Pods-PDB-Client-App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6D521FF5CEFBFD5C85CC3E7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PDB-Client-App-PDB-Client-AppUITests/Pods-PDB-Client-App-PDB-Client-AppUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PDB-Client-App-PDB-Client-AppUITests/Pods-PDB-Client-App-PDB-Client-AppUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PDB-Client-App-PDB-Client-AppUITests/Pods-PDB-Client-App-PDB-Client-AppUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF0E36D86500D8ADA7DAF4DA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PDB-Client-App/Pods-PDB-Client-App-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PDB-Client-App/Pods-PDB-Client-App-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PDB-Client-App/Pods-PDB-Client-App-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FCFB513F77FA04036BA7B374 /* [CP] Check Pods Manifest.lock */ = {
@@ -920,7 +956,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9733E967254CA9BF00034689 /* XCRemoteSwiftPackageReference "ASCollectionView" */ = {
+		9733E967254CA9BF00034689 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apptekstudios/ASCollectionView";
 			requirement = {
@@ -928,7 +964,7 @@
 				minimumVersion = 1.7.1;
 			};
 		};
-		9735E1C3255F3B3800FF726D /* XCRemoteSwiftPackageReference "url-image" */ = {
+		9735E1C3255F3B3800FF726D /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
 			requirement = {
@@ -939,14 +975,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9733E968254CA9BF00034689 /* ASCollectionViewDynamic */ = {
+		9733E968254CA9BF00034689 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9733E967254CA9BF00034689 /* XCRemoteSwiftPackageReference "ASCollectionView" */;
+			package = 9733E967254CA9BF00034689 /* RemoteSwiftPackageReference */;
 			productName = ASCollectionViewDynamic;
 		};
-		9735E1C4255F3B3800FF726D /* URLImage */ = {
+		9735E1C4255F3B3800FF726D /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9735E1C3255F3B3800FF726D /* XCRemoteSwiftPackageReference "url-image" */;
+			package = 9735E1C3255F3B3800FF726D /* RemoteSwiftPackageReference */;
 			productName = URLImage;
 		};
 /* End XCSwiftPackageProductDependency section */
