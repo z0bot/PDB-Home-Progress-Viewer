@@ -8,17 +8,21 @@
 import SwiftUI
 import Firebase
 import FirebaseStorage
+import URLImage
 
 struct ImagePreviewView: View {
     var image: ImageModel
     var body: some View {
         
         VStack(spacing: .none) {
-            Image("HouseTemp")
-                .resizable()
-                .cornerRadius(20)
-                .scaledToFit()
-                .opacity(0.5)
+            URLImage(url: URL(string: image.imageURL)!) { image in
+                image.resizable()
+                    .cornerRadius(20)
+                    .scaledToFit()
+                    .opacity(0.5)
+                        
+            }.frame(width: 120, height: 120, alignment: .center)
+            .cornerRadius(20)
             
             Text(image.DateString())
                 .font(Font.custom("Microsoft Tai Le", size: 23))

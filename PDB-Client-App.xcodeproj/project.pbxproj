@@ -44,6 +44,8 @@
 		973D8D8725420C1C00FEBB7C /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973D8D8625420C1C00FEBB7C /* HomePage.swift */; };
 		973EAFBA255E07C500147C09 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973EAFB9255E07C500147C09 /* ImagePickerView.swift */; };
 		9764600F254A66EB00B6545A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9764600E254A66EB00B6545A /* GoogleService-Info.plist */; };
+		F24C10E72564C622003F97C6 /* AddProjectAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C10E62564C622003F97C6 /* AddProjectAlert.swift */; };
+		F24D77C12564ADA100522B1C /* AddProjectPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24D77C02564ADA100522B1C /* AddProjectPage.swift */; };
 		F2724C562552657100FEFCEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2724C552552657000FEFCEE /* AppDelegate.swift */; };
 		F2724C5C2552658300FEFCEE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2724C5B2552658300FEFCEE /* SceneDelegate.swift */; };
 		F40005956470C5511D9EC023 /* Pods_PDB_Client_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E9A3BDF41697952FAFBE77 /* Pods_PDB_Client_App.framework */; };
@@ -129,6 +131,8 @@
 		CC7897901C9391C830B73DA1 /* Pods-PDB-Client-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDB-Client-App.release.xcconfig"; path = "Target Support Files/Pods-PDB-Client-App/Pods-PDB-Client-App.release.xcconfig"; sourceTree = "<group>"; };
 		CFC95AB9BAA0D62262E985A1 /* Pods-PDB-Client-App-PDB-Client-AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDB-Client-App-PDB-Client-AppUITests.release.xcconfig"; path = "Target Support Files/Pods-PDB-Client-App-PDB-Client-AppUITests/Pods-PDB-Client-App-PDB-Client-AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		ECB783DDDAF062056767313F /* Pods_PDB_Client_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PDB_Client_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F24C10E62564C622003F97C6 /* AddProjectAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectAlert.swift; sourceTree = "<group>"; };
+		F24D77C02564ADA100522B1C /* AddProjectPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectPage.swift; sourceTree = "<group>"; };
 		F2724C552552657000FEFCEE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2724C5B2552658300FEFCEE /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F303DBEE65D507DFEEE72F4A /* Pods-PDB-Client-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDB-Client-App.debug.xcconfig"; path = "Target Support Files/Pods-PDB-Client-App/Pods-PDB-Client-App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 				9733DF32254DE29400710880 /* ChangeOrderPreviewView.swift */,
 				97343998255243E0006A3865 /* MessageView.swift */,
 				973C53952564ADB80022EAFE /* HTMLView.swift */,
+				F24C10E62564C622003F97C6 /* AddProjectAlert.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 				9734399425523D3D006A3865 /* MessagePage.swift */,
 				9736E8D525547518004780AC /* CreateAccountPage.swift */,
 				973EAFB9255E07C500147C09 /* ImagePickerView.swift */,
+				F24D77C02564ADA100522B1C /* AddProjectPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -600,6 +606,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F24D77C12564ADA100522B1C /* AddProjectPage.swift in Sources */,
 				1AE51DDB2547F3B300CADAC1 /* LoginPage.swift in Sources */,
 				973C539A256776690022EAFE /* ChangeOrderFormList.swift in Sources */,
 				9733DF33254DE29400710880 /* ChangeOrderPreviewView.swift in Sources */,
@@ -611,6 +618,7 @@
 				9734399D255243F2006A3865 /* Message.swift in Sources */,
 				F2724C562552657100FEFCEE /* AppDelegate.swift in Sources */,
 				9733A5302547ACFF00DEC9AD /* TabPage.swift in Sources */,
+				F24C10E72564C622003F97C6 /* AddProjectAlert.swift in Sources */,
 				973D8D582541EEAF00FEBB7C /* ContentView.swift in Sources */,
 				973D8D8725420C1C00FEBB7C /* HomePage.swift in Sources */,
 				9734397925505B66006A3865 /* User.swift in Sources */,
