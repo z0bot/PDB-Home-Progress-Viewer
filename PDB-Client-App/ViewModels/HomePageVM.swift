@@ -45,8 +45,8 @@ class HomePageVM: ObservableObject {
                             }
                         }
                         
-                        self.getForms(id: id) { forms in
-                            self.projects.append((Project(builderEmail: builderEmail, imageURL: imageURL, name: name, address: address, archived: archived, rooms: rooms, forms: forms, docId: id)))
+                        self.getForms(id: p) { forms in
+                            self.projects.append((Project(builderEmail: builderEmail, imageURL: imageURL, name: name, address: address, archived: archived, rooms: rooms, forms: forms, docId: p)))
                         }
                     }
               }
@@ -109,8 +109,6 @@ class HomePageVM: ObservableObject {
                
             }
     }
-
-}
     
     /*func getImages(pid: String, rid: String, completion: @escaping (([ImageModel]) -> ()))
     {
@@ -127,12 +125,12 @@ class HomePageVM: ObservableObject {
                 }
         })
         completion(images)
-    }
+    }*/
 
     func getForms(id: String, completion:@escaping ((([ChangeOrderForm]) -> ()))) {
         var forms = [ChangeOrderForm]()
         
-        var query = Firestore.firestore().document(id).collection("Forms")
+        //var query = Firestore.firestore().document(id).collection("Forms")
         
         //FirebaseUI stuff here
         
@@ -148,7 +146,8 @@ class HomePageVM: ObservableObject {
                     
                     let formHTML = document.data()["html"] as? String ?? ""
                     let signed = document.data()["signed"] as? Bool ?? false
-                    forms.append(ChangeOrderForm(fireID: fireID, title: title, date: date, htmlData: formHTML, signed: signed))
+                    let initials = document.data()["initials"] as? String ?? ""
+                    forms.append(ChangeOrderForm(fireID: fireID, title: title, date: date, htmlData: formHTML, signed: signed, initials: initials))
                     
                 }
             completion(forms)

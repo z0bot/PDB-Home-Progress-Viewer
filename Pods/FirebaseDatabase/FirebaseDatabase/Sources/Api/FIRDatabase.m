@@ -30,6 +30,13 @@
 
 @implementation FIRDatabase
 
+// The STR and STR_EXPAND macro allow a numeric version passed to he compiler
+// driver with a -D to be treated as a string instead of an invalid floating
+// point value.
+#define STR(x) STR_EXPAND(x)
+#define STR_EXPAND(x) #x
+static const char *FIREBASE_SEMVER = (const char *)STR(FIRDatabase_VERSION);
+
 + (FIRDatabase *)database {
     if (![FIRApp isDefaultAppConfigured]) {
         [NSException raise:@"FIRAppNotConfigured"
@@ -96,7 +103,7 @@
 
 + (NSString *)buildVersion {
     // TODO: Restore git hash when build moves back to git
-    return [NSString stringWithFormat:@"%@_%s", FIRFirebaseVersion(), __DATE__];
+    return [NSString stringWithFormat:@"%s_%s", FIREBASE_SEMVER, __DATE__];
 }
 
 + (FIRDatabase *)createDatabaseForTests:(FRepoInfo *)repoInfo
@@ -109,7 +116,7 @@
 }
 
 + (NSString *)sdkVersion {
-    return FIRFirebaseVersion();
+    return [NSString stringWithUTF8String:FIREBASE_SEMVER];
 }
 
 + (void)setLoggingEnabled:(BOOL)enabled {

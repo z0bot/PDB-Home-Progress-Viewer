@@ -52,7 +52,8 @@ typedef NSMutableDictionary<NSString *, FIRDatabase *> FIRDatabaseDictionary;
 
 + (void)load {
     [FIRApp registerInternalLibrary:(Class<FIRLibrary>)self
-                           withName:@"fire-db"];
+                           withName:@"fire-db"
+                        withVersion:[FIRDatabase sdkVersion]];
 }
 
 #pragma mark - FIRComponentRegistrant

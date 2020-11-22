@@ -16,8 +16,8 @@
 		9733A5352547BED600DEC9AD /* ImagePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733A5342547BED600DEC9AD /* ImagePreviewView.swift */; };
 		9733DF33254DE29400710880 /* ChangeOrderPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733DF32254DE29400710880 /* ChangeOrderPreviewView.swift */; };
 		9733DF37254DE50400710880 /* SignFormPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733DF36254DE50400710880 /* SignFormPage.swift */; };
-		9733E969254CA9BF00034689 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 9733E968254CA9BF00034689 /* SwiftPackageProductDependency */; };
-		9733E96A254CA9BF00034689 /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9733E968254CA9BF00034689 /* SwiftPackageProductDependency */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		9733E969254CA9BF00034689 /* ASCollectionViewDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 9733E968254CA9BF00034689 /* ASCollectionViewDynamic */; };
+		9733E96A254CA9BF00034689 /* ASCollectionViewDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9733E968254CA9BF00034689 /* ASCollectionViewDynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9733E976254CC65A00034689 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9733E975254CC65A00034689 /* Launch Screen.storyboard */; };
 		9733E97C254CDA6100034689 /* ChangeOrderPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733E97B254CDA6100034689 /* ChangeOrderPage.swift */; };
 		9733E980254CDB0A00034689 /* ChangeOrderForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733E97F254CDB0A00034689 /* ChangeOrderForm.swift */; };
@@ -25,7 +25,7 @@
 		9734399525523D3D006A3865 /* MessagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734399425523D3D006A3865 /* MessagePage.swift */; };
 		97343999255243E0006A3865 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97343998255243E0006A3865 /* MessageView.swift */; };
 		9734399D255243F2006A3865 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734399C255243F2006A3865 /* Message.swift */; };
-		9735E1C5255F3B3800FF726D /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 9735E1C4255F3B3800FF726D /* SwiftPackageProductDependency */; };
+		9735E1C5255F3B3800FF726D /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9735E1C4255F3B3800FF726D /* URLImage */; };
 		973630272544D353009796F1 /* AppDelegateOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973630262544D353009796F1 /* AppDelegateOLD.swift */; };
 		9736E8D625547518004780AC /* CreateAccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736E8D525547518004780AC /* CreateAccountPage.swift */; };
 		973713902543A96100D11590 /* ProjectSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9737138F2543A96100D11590 /* ProjectSelectionView.swift */; };
@@ -34,7 +34,6 @@
 		973AEED5254497DA00FCBDD4 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973AEED4254497DA00FCBDD4 /* Client.swift */; };
 		973AEEDE25449D3900FCBDD4 /* HomePageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973AEEDD25449D3900FCBDD4 /* HomePageVM.swift */; };
 		973C53962564ADB80022EAFE /* HTMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973C53952564ADB80022EAFE /* HTMLView.swift */; };
-		973C539A256776690022EAFE /* ChangeOrderFormList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973C5399256776690022EAFE /* ChangeOrderFormList.swift */; };
 		973D8D562541EEAF00FEBB7C /* PDB_Client_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973D8D552541EEAF00FEBB7C /* PDB_Client_App.swift */; };
 		973D8D582541EEAF00FEBB7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973D8D572541EEAF00FEBB7C /* ContentView.swift */; };
 		973D8D5A2541EEB000FEBB7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 973D8D592541EEB000FEBB7C /* Assets.xcassets */; };
@@ -76,7 +75,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9733E96A254CA9BF00034689 /* BuildFile in Embed Frameworks */,
+				9733E96A254CA9BF00034689 /* ASCollectionViewDynamic in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,7 +109,6 @@
 		973AEED4254497DA00FCBDD4 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		973AEEDD25449D3900FCBDD4 /* HomePageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageVM.swift; sourceTree = "<group>"; };
 		973C53952564ADB80022EAFE /* HTMLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLView.swift; sourceTree = "<group>"; };
-		973C5399256776690022EAFE /* ChangeOrderFormList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeOrderFormList.swift; sourceTree = "<group>"; };
 		973D8D522541EEAF00FEBB7C /* PDB-Client-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PDB-Client-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		973D8D552541EEAF00FEBB7C /* PDB_Client_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDB_Client_App.swift; sourceTree = "<group>"; };
 		973D8D572541EEAF00FEBB7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -144,8 +142,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F40005956470C5511D9EC023 /* Pods_PDB_Client_App.framework in Frameworks */,
-				9735E1C5255F3B3800FF726D /* BuildFile in Frameworks */,
-				9733E969254CA9BF00034689 /* BuildFile in Frameworks */,
+				9735E1C5255F3B3800FF726D /* URLImage in Frameworks */,
+				9733E969254CA9BF00034689 /* ASCollectionViewDynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +212,6 @@
 				9734397825505B66006A3865 /* User.swift */,
 				9733E97F254CDB0A00034689 /* ChangeOrderForm.swift */,
 				9734399C255243F2006A3865 /* Message.swift */,
-				973C5399256776690022EAFE /* ChangeOrderFormList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -343,8 +340,8 @@
 			);
 			name = "PDB-Client-App";
 			packageProductDependencies = (
-				9733E968254CA9BF00034689 /* SwiftPackageProductDependency */,
-				9735E1C4255F3B3800FF726D /* SwiftPackageProductDependency */,
+				9733E968254CA9BF00034689 /* ASCollectionViewDynamic */,
+				9735E1C4255F3B3800FF726D /* URLImage */,
 			);
 			productName = "PDB-Client-App";
 			productReference = 973D8D522541EEAF00FEBB7C /* PDB-Client-App.app */;
@@ -422,8 +419,8 @@
 			);
 			mainGroup = 973D8D492541EEAF00FEBB7C;
 			packageReferences = (
-				9733E967254CA9BF00034689 /* RemoteSwiftPackageReference */,
-				9735E1C3255F3B3800FF726D /* RemoteSwiftPackageReference */,
+				9733E967254CA9BF00034689 /* XCRemoteSwiftPackageReference "ASCollectionView" */,
+				9735E1C3255F3B3800FF726D /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			productRefGroup = 973D8D532541EEAF00FEBB7C /* Products */;
 			projectDirPath = "";
@@ -608,7 +605,6 @@
 			files = (
 				F24D77C12564ADA100522B1C /* AddProjectPage.swift in Sources */,
 				1AE51DDB2547F3B300CADAC1 /* LoginPage.swift in Sources */,
-				973C539A256776690022EAFE /* ChangeOrderFormList.swift in Sources */,
 				9733DF33254DE29400710880 /* ChangeOrderPreviewView.swift in Sources */,
 				973713A82543D1CE00D11590 /* PreviewData.swift in Sources */,
 				9733A5352547BED600DEC9AD /* ImagePreviewView.swift in Sources */,
@@ -964,7 +960,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9733E967254CA9BF00034689 /* RemoteSwiftPackageReference */ = {
+		9733E967254CA9BF00034689 /* XCRemoteSwiftPackageReference "ASCollectionView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apptekstudios/ASCollectionView";
 			requirement = {
@@ -972,7 +968,7 @@
 				minimumVersion = 1.7.1;
 			};
 		};
-		9735E1C3255F3B3800FF726D /* RemoteSwiftPackageReference */ = {
+		9735E1C3255F3B3800FF726D /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
 			requirement = {
@@ -983,14 +979,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9733E968254CA9BF00034689 /* SwiftPackageProductDependency */ = {
+		9733E968254CA9BF00034689 /* ASCollectionViewDynamic */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9733E967254CA9BF00034689 /* RemoteSwiftPackageReference */;
+			package = 9733E967254CA9BF00034689 /* XCRemoteSwiftPackageReference "ASCollectionView" */;
 			productName = ASCollectionViewDynamic;
 		};
-		9735E1C4255F3B3800FF726D /* SwiftPackageProductDependency */ = {
+		9735E1C4255F3B3800FF726D /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9735E1C3255F3B3800FF726D /* RemoteSwiftPackageReference */;
+			package = 9735E1C3255F3B3800FF726D /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
 		};
 /* End XCSwiftPackageProductDependency section */
