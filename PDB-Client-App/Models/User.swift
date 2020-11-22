@@ -11,20 +11,16 @@ class User {
     public private(set) var Name: String
     public private(set) var PhoneNumber: String
     public private(set) var EmailAddress: String
-
-    public private(set) var Projects: [Project]
+    public private(set) var Projects: [String]
     
     func SendMessage() {
         //TODO: Implement send message functionality
     }
-    func AddProject(project: Project) {
-        Projects.append(project)
-    }
     
-    public init(name: String, phoneNumber: String, emailAddress: String) {
+    public init(name: String, phoneNumber: String, emailAddress: String, projects: [String]) {
         Name = name
         PhoneNumber = phoneNumber
         EmailAddress = emailAddress
-        Projects = [Project]()
+        Projects = projects
     }
 }

@@ -12,7 +12,8 @@ import ASCollectionView
 struct HomePage: View {
     // If we need to pass in this data later, use @EnvironmentObject instead of @ObservedObject
     @ObservedObject var viewModel = HomePageVM()
-    
+    @State var showAlert = false
+    @State var projectCode: String = ""
     /*private var cols: [GridItem] = [
         GridItem(.flexible(), spacing: 20),
         GridItem(.flexible(), spacing: 20)
@@ -33,15 +34,20 @@ struct HomePage: View {
                 
                 Spacer()
                 
-                Image("plus")
-                    .gesture(TapGesture().onEnded({
-                        //TODO: Add functionality for adding a new property
-                        viewModel.projects.append(Project(imageURL: "https://firebasestorage.googleapis.com/v0/b/pd-builders.appspot.com/o/testProject%2FPDB%20(2).jpg?alt=media&token=b2cacd69-40ca-4ea4-869c-635d1b500743", name: "newProj", address: "aaa"))
-                    }))
+                Image("plus").onTapGesture(count: 1, perform: {
+                    self.showAlert.toggle()
+                })
+                .foregroundColor(Color("TextGreen"))
+                .padding(10)
+                
+                /*.sheet(isPresented: $displayAddProjectPage, content: {
+                    AddProjectPage(dismiss: $displayAddProjectPage, returnprojectCode: $projectCode)
+                })*/
+                    
             }.padding()
             
             //ScrollView {
-                
+            ZStack{
                 ASCollectionView(data: viewModel.projects) { project,arg  in
                     
                     NavigationLink(destination:
@@ -60,6 +66,8 @@ struct HomePage: View {
                 )
                 //.frame(height: .infinity)
                 .padding(.all)
+                AddProjectPage(isShown: $showAlert, returnprojectCode: $projectCode)
+        }
                 /*LazyVGrid(columns: cols,
                           spacing: 30)*/
                 /*Grid(tracks: 2) {
@@ -105,8 +113,6 @@ struct HomePage: View {
         }.onAppear(){self.viewModel.getProjects()}
     }
 }
-
-
 
 struct HomePage_Previews: PreviewProvider {
     static var previews: some View {
