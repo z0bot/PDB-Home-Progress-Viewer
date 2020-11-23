@@ -73,7 +73,8 @@ class HomePageVM: ObservableObject {
                         {
                             let imageRef = document.data()["imageURL"] as? String ?? ""
                             let date = document.data()["date"] as? Date ?? Date(timeIntervalSinceNow: 0)
-                            images.append(ImageModel(id: UUID(), imageURL: imageRef, date: date))
+                            let is360 = document.data()["is360"] as? Bool ?? false
+                            images.append(ImageModel(id: UUID(), imageURL: imageRef, date: date, is360: is360))
                             
                         }
                         rooms.append(Room(id: UUID(), name: name, images: images))

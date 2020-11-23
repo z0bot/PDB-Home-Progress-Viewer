@@ -13,6 +13,8 @@ target 'PDB-Client-App' do
 
   pod 'FirebaseUI/Auth', '~> 8.0'
   
+  pod "CTPanoramaView"
+  
   #pod 'ExyteGrid', '0.1.0'
   # Pods for PDB-Client-App
   # Add the Firebase pod for Google Analytics

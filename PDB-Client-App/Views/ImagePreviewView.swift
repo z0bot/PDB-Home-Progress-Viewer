@@ -18,7 +18,7 @@ struct ImagePreviewView: View {
             URLImage(url: URL(string: image.imageURL)!) { image in
                 image.resizable()
                     .cornerRadius(20)
-                    .scaledToFit()
+                    .scaledToFill()
                     .opacity(0.5)
                         
             }.frame(width: 120, height: 120, alignment: .center)

@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import CTPanoramaView
+import URLImage
 
 struct ProgressGalleryPage: View {
     var rooms: [Room]
@@ -22,13 +24,22 @@ struct ProgressGalleryPage: View {
                         HStack {
                             ForEach(room.images) { image in
                               
-                                
-                                NavigationLink(destination: Text(image.texty)) {
-                                    ImagePreviewView(image: image)
-                                        .frame(width: 150)
-                                        .padding([.leading,.trailing], 2.0)
+                                if(image.is360) {
+                                    NavigationLink(destination: PanoramaView(image: image.getImage())) {
+                                        ImagePreviewView(image: image)
+                                            .frame(width: 150)
+                                            .padding([.leading,.trailing], 2.0)
+                                    }
                                 }
-                                
+                                else {
+                                    URLImage(url: URL(string: image.imageURL)!) { img in
+                                        NavigationLink(destination: img.resizable().scaledToFit()) {
+                                            ImagePreviewView(image: image)
+                                                .frame(width: 150)
+                                                .padding([.leading,.trailing], 2.0)
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

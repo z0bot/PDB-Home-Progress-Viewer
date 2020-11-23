@@ -35,6 +35,8 @@ struct SignFormPage: View {
                             .font(Font.custom("Microsoft Tai Le", size: 23))
                         
                         Image("signHereField")
+                    Text(form.initials).font(Font.custom("Microsoft Tai Le", size: 23))
+                        .offset(x: 40, y: -62)
                             
                     Spacer()
                 }
@@ -56,7 +58,7 @@ struct SignFormPage: View {
     
     func SignForm(completion:@escaping ((Bool) -> ())) {
         if form.signed {
-            return
+            completion(false)
         }
         
         var ref = Firestore.firestore().collection("Projects").document(projectID).collection("Forms").document(form.fireID)

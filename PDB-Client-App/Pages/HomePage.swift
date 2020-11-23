@@ -8,12 +8,16 @@
 import SwiftUI
 import Combine
 import ASCollectionView
+import FirebaseAuth
 
 struct HomePage: View {
     // If we need to pass in this data later, use @EnvironmentObject instead of @ObservedObject
     @ObservedObject var viewModel = HomePageVM()
     @State var showAlert = false
     @State var projectCode: String = ""
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     /*private var cols: [GridItem] = [
         GridItem(.flexible(), spacing: 20),
         GridItem(.flexible(), spacing: 20)
@@ -106,11 +110,22 @@ struct HomePage: View {
                     .font(Font.custom("Microsoft Tai Le", size: 23))
                     .bold()
                     .foregroundColor(Color("TextGreen"))
+                    .onTapGesture {
+                        do {
+                            try Auth.auth().signOut()
+                        }
+                        catch is Error {
+                            print("Couldn't log out")
+                        }
+                        
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
                 Spacer()
             }
             .padding()
             .frame(alignment: .leading)
         }.onAppear(){self.viewModel.getProjects()}
+        .navigationBarBackButtonHidden(true)
     }
 }
 
