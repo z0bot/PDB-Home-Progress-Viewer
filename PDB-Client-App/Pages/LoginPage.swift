@@ -74,6 +74,7 @@ struct LoginPage: View{
         
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,
                 maxHeight: .infinity).edgesIgnoringSafeArea([.bottom, .top])
+            .onAppear(){userName = "";password=""}
     }
             
            

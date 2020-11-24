@@ -8,12 +8,14 @@
 import SwiftUI
 import Combine
 import ASCollectionView
+import FirebaseAuth
 
 struct HomePage: View {
     // If we need to pass in this data later, use @EnvironmentObject instead of @ObservedObject
     @ObservedObject var viewModel = HomePageVM()
     @State var showAlert = false
     @State var projectCode: String = ""
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     /*private var cols: [GridItem] = [
         GridItem(.flexible(), spacing: 20),
         GridItem(.flexible(), spacing: 20)
@@ -66,7 +68,7 @@ struct HomePage: View {
                 )
                 //.frame(height: .infinity)
                 .padding(.all)
-                AddProjectPage(isShown: $showAlert, returnprojectCode: $projectCode)
+                AddProjectPage(vm: viewModel, isShown: $showAlert, returnprojectCode: $projectCode)
         }
                 /*LazyVGrid(columns: cols,
                           spacing: 30)*/
@@ -106,14 +108,28 @@ struct HomePage: View {
                     .font(Font.custom("Microsoft Tai Le", size: 23))
                     .bold()
                     .foregroundColor(Color("TextGreen"))
+                .onTapGesture {
+                    logOut()
+                }
                 Spacer()
             }
             .padding()
             .frame(alignment: .leading)
         }.onAppear(){self.viewModel.getProjects()}
     }
+    
+    func logOut()
+    {
+        do {
+            try Auth.auth().signOut()
+            self.presentationMode.wrappedValue.dismiss()
+            
+        } catch let err {
+            print(err)
+        }
+    
+    }
 }
-
 struct HomePage_Previews: PreviewProvider {
     static var previews: some View {
         HomePage()
