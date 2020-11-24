@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2018 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@
 namespace firebase {
 namespace firestore {
 namespace model {
+
 namespace {
 
 void AssertValidPath(const ResourcePath& path) {
@@ -58,8 +59,8 @@ DocumentKey DocumentKey::FromSegments(std::initializer_list<std::string> list) {
 }
 
 const DocumentKey& DocumentKey::Empty() {
-  static const DocumentKey* empty = new DocumentKey();
-  return *empty;
+  static const DocumentKey empty;
+  return empty;
 }
 
 bool DocumentKey::IsDocumentKey(const ResourcePath& path) {

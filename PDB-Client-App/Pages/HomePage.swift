@@ -15,7 +15,9 @@ struct HomePage: View {
     @ObservedObject var viewModel = HomePageVM()
     @State var showAlert = false
     @State var projectCode: String = ""
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     /*private var cols: [GridItem] = [
         GridItem(.flexible(), spacing: 20),
         GridItem(.flexible(), spacing: 20)
@@ -116,6 +118,7 @@ struct HomePage: View {
             .padding()
             .frame(alignment: .leading)
         }.onAppear(){self.viewModel.getProjects()}
+        .navigationBarBackButtonHidden(true)
     }
     
     func logOut()

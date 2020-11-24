@@ -7,13 +7,15 @@
 
 import SwiftUI
 import FirebaseFirestore
+import FirebaseUI	
+
 struct TabPage: View {
         var project: Project
         @State private var selection = 1
     var body: some View {
         
         TabView(selection: $selection) {
-            MessagePage(userID: UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E6F")!, propertyID: UUID(uuidString: "F621E1F8-C36C-495A-93FC-0C247A3E6E5F")!)
+            MessagePage(propertyID:  project.docId)
                 .tabItem {
                     if(selection == 0) {
                         Image("messageActive_Icon")
@@ -33,7 +35,7 @@ struct TabPage: View {
                         Image("gallery_Icon")
                     }
                 }.tag(1)
-            ChangeOrderPage(forms: project.changeOrderForms)
+            ChangeOrderPage(forms: project.changeOrderForms, projectID: project.docId)
                 .tabItem {
                     if(selection == 2) {
                         Image("fileActive_Icon")
@@ -42,7 +44,7 @@ struct TabPage: View {
                         Image("file_Icon")
                     }
                 }.tag(2)
-        }.onAppear(){}
+        }
      
     }
    /* func getRooms(){

@@ -33,6 +33,8 @@
 		973713A82543D1CE00D11590 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973713A72543D1CE00D11590 /* PreviewData.swift */; };
 		973AEED5254497DA00FCBDD4 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973AEED4254497DA00FCBDD4 /* Client.swift */; };
 		973AEEDE25449D3900FCBDD4 /* HomePageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973AEEDD25449D3900FCBDD4 /* HomePageVM.swift */; };
+		973C53962564ADB80022EAFE /* HTMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973C53952564ADB80022EAFE /* HTMLView.swift */; };
+		973C546A256B5F010022EAFE /* PanoramaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973C5469256B5F010022EAFE /* PanoramaView.swift */; };
 		973D8D562541EEAF00FEBB7C /* PDB_Client_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973D8D552541EEAF00FEBB7C /* PDB_Client_App.swift */; };
 		973D8D582541EEAF00FEBB7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973D8D572541EEAF00FEBB7C /* ContentView.swift */; };
 		973D8D5A2541EEB000FEBB7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 973D8D592541EEB000FEBB7C /* Assets.xcassets */; };
@@ -107,6 +109,8 @@
 		973713A72543D1CE00D11590 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		973AEED4254497DA00FCBDD4 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		973AEEDD25449D3900FCBDD4 /* HomePageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageVM.swift; sourceTree = "<group>"; };
+		973C53952564ADB80022EAFE /* HTMLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLView.swift; sourceTree = "<group>"; };
+		973C5469256B5F010022EAFE /* PanoramaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanoramaView.swift; sourceTree = "<group>"; };
 		973D8D522541EEAF00FEBB7C /* PDB-Client-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PDB-Client-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		973D8D552541EEAF00FEBB7C /* PDB_Client_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDB_Client_App.swift; sourceTree = "<group>"; };
 		973D8D572541EEAF00FEBB7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -194,7 +198,9 @@
 				9733A5342547BED600DEC9AD /* ImagePreviewView.swift */,
 				9733DF32254DE29400710880 /* ChangeOrderPreviewView.swift */,
 				97343998255243E0006A3865 /* MessageView.swift */,
+				973C53952564ADB80022EAFE /* HTMLView.swift */,
 				F24C10E62564C622003F97C6 /* AddProjectAlert.swift */,
+				973C5469256B5F010022EAFE /* PanoramaView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -329,6 +335,7 @@
 				973D8D502541EEAF00FEBB7C /* Resources */,
 				B10467A120C692CB19584AAE /* [CP] Embed Pods Frameworks */,
 				9733E942254CA69E00034689 /* Embed Frameworks */,
+				DF0E36D86500D8ADA7DAF4DA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -371,6 +378,7 @@
 				973D8D6B2541EEB100FEBB7C /* Frameworks */,
 				973D8D6C2541EEB100FEBB7C /* Resources */,
 				2AD3C6954F19336FBC7819E0 /* [CP] Embed Pods Frameworks */,
+				D6D521FF5CEFBFD5C85CC3E7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -535,6 +543,40 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PDB-Client-App/Pods-PDB-Client-App-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D6D521FF5CEFBFD5C85CC3E7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PDB-Client-App-PDB-Client-AppUITests/Pods-PDB-Client-App-PDB-Client-AppUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PDB-Client-App-PDB-Client-AppUITests/Pods-PDB-Client-App-PDB-Client-AppUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PDB-Client-App-PDB-Client-AppUITests/Pods-PDB-Client-App-PDB-Client-AppUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF0E36D86500D8ADA7DAF4DA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PDB-Client-App/Pods-PDB-Client-App-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PDB-Client-App/Pods-PDB-Client-App-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PDB-Client-App/Pods-PDB-Client-App-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FCFB513F77FA04036BA7B374 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -577,12 +619,14 @@
 				9733A5302547ACFF00DEC9AD /* TabPage.swift in Sources */,
 				F24C10E72564C622003F97C6 /* AddProjectAlert.swift in Sources */,
 				973D8D582541EEAF00FEBB7C /* ContentView.swift in Sources */,
+				973C546A256B5F010022EAFE /* PanoramaView.swift in Sources */,
 				973D8D8725420C1C00FEBB7C /* HomePage.swift in Sources */,
 				9734397925505B66006A3865 /* User.swift in Sources */,
 				973713992543A98C00D11590 /* Project.swift in Sources */,
 				97343999255243E0006A3865 /* MessageView.swift in Sources */,
 				9733E980254CDB0A00034689 /* ChangeOrderForm.swift in Sources */,
 				973AEEDE25449D3900FCBDD4 /* HomePageVM.swift in Sources */,
+				973C53962564ADB80022EAFE /* HTMLView.swift in Sources */,
 				973D8D562541EEAF00FEBB7C /* PDB_Client_App.swift in Sources */,
 				9736E8D625547518004780AC /* CreateAccountPage.swift in Sources */,
 				973AEED5254497DA00FCBDD4 /* Client.swift in Sources */,
@@ -760,7 +804,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "PDB.PDB-Client-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "PDB.PDB-Client-App1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -783,7 +827,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "PDB.PDB-Client-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "PDB.PDB-Client-App1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

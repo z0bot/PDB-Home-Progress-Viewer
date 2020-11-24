@@ -82,8 +82,8 @@ void LogGrpcCallFinished(absl::string_view rpc_name,
             status.error_message());
   if (LogIsDebugEnabled()) {
     auto headers =
-        Datastore::GetAllowlistedHeadersAsString(call->GetResponseHeaders());
-    LOG_DEBUG("RPC %s returned headers (allowlisted): %s", rpc_name, headers);
+        Datastore::GetWhitelistedHeadersAsString(call->GetResponseHeaders());
+    LOG_DEBUG("RPC %s returned headers (whitelisted): %s", rpc_name, headers);
   }
 }
 
@@ -332,16 +332,15 @@ bool Datastore::IsPermanentWriteError(const Status& error) {
   return IsPermanentError(error) && !IsAbortedError(error);
 }
 
-std::string Datastore::GetAllowlistedHeadersAsString(
+std::string Datastore::GetWhitelistedHeadersAsString(
     const GrpcCall::Metadata& headers) {
-  static auto* allowlist = new std::unordered_set<std::string>{
+  static std::unordered_set<std::string> whitelist = {
       "date", "x-google-backends", "x-google-netmon-label", "x-google-service",
       "x-google-gfe-request-trace"};
 
   std::string result;
-  auto end = allowlist->end();
   for (const auto& kv : headers) {
-    if (allowlist->find(MakeString(kv.first)) != end) {
+    if (whitelist.find(MakeString(kv.first)) != whitelist.end()) {
       absl::StrAppend(&result, MakeStringView(kv.first), ": ",
                       MakeStringView(kv.second), "\n");
     }

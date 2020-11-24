@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Google LLC
+ * Copyright 2019 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,16 +31,23 @@ class FieldValueOptions {
    * Creates an FieldValueOptions instance that specifies deserialization
    * behavior for pending server timestamps.
    */
-  explicit FieldValueOptions(ServerTimestampBehavior server_timestamp_behavior)
-      : server_timestamp_behavior_(server_timestamp_behavior) {
+  FieldValueOptions(ServerTimestampBehavior server_timestamp_behavior,
+                    bool timestamps_in_snapshots_enabled)
+      : server_timestamp_behavior_(server_timestamp_behavior),
+        timestamps_in_snapshots_enabled_(timestamps_in_snapshots_enabled) {
   }
 
   ServerTimestampBehavior server_timestamp_behavior() const {
     return server_timestamp_behavior_;
   }
 
+  bool timestamps_in_snapshots_enabled() const {
+    return timestamps_in_snapshots_enabled_;
+  }
+
  private:
   ServerTimestampBehavior server_timestamp_behavior_;
+  bool timestamps_in_snapshots_enabled_;
 };
 
 }  // namespace model

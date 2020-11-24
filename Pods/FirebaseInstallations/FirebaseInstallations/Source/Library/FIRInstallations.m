@@ -31,10 +31,9 @@
 #import "FirebaseInstallations/Source/Library/FIRInstallationsLogger.h"
 #import "FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsIDController.h"
 #import "FirebaseInstallations/Source/Library/InstallationsStore/FIRInstallationsStoredAuthToken.h"
+#import "FirebaseInstallations/Source/Library/Public/FirebaseInstallations/FIRInstallationsVersion.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-static const NSUInteger kExpectedAPIKeyLength = 39;
 
 @protocol FIRInstallationsInstanceProvider <FIRLibrary>
 @end
@@ -52,7 +51,9 @@ static const NSUInteger kExpectedAPIKeyLength = 39;
 #pragma mark - Firebase component
 
 + (void)load {
-  [FIRApp registerInternalLibrary:(Class<FIRLibrary>)self withName:@"fire-install"];
+  [FIRApp registerInternalLibrary:(Class<FIRLibrary>)self
+                         withName:@"fire-install"
+                      withVersion:[NSString stringWithUTF8String:FIRInstallationsVersionStr]];
 }
 
 + (nonnull NSArray<FIRComponent *> *)componentsToRegister {
@@ -127,7 +128,9 @@ static const NSUInteger kExpectedAPIKeyLength = 39;
     [missingFields addObject:@"`FirebaseOptions.googleAppID`"];
   }
 
-  if (appOptions.projectID.length < 1) {
+  // TODO(#4692): Check for `appOptions.projectID.length < 1` only.
+  // We can use `GCMSenderID` instead of `projectID` temporary.
+  if (appOptions.projectID.length < 1 && appOptions.GCMSenderID.length < 1) {
     [missingFields addObject:@"`FirebaseOptions.projectID`"];
   }
 
@@ -142,43 +145,6 @@ static const NSUInteger kExpectedAPIKeyLength = 39;
             @"required parameters.",
             kFIRLoggerInstallations, kFIRInstallationsMessageCodeInvalidFirebaseAppOptions,
             [missingFields componentsJoinedByString:@", "]];
-  }
-
-  [self validateAPIKey:appOptions.APIKey];
-}
-
-+ (void)validateAPIKey:(nullable NSString *)APIKey {
-  NSMutableArray<NSString *> *validationIssues = [[NSMutableArray alloc] init];
-
-  if (APIKey.length != kExpectedAPIKeyLength) {
-    [validationIssues addObject:[NSString stringWithFormat:@"API Key length must be %lu characters",
-                                                           (unsigned long)kExpectedAPIKeyLength]];
-  }
-
-  if (![[APIKey substringToIndex:1] isEqualToString:@"A"]) {
-    [validationIssues addObject:@"API Key must start with `A`"];
-  }
-
-  NSMutableCharacterSet *allowedCharacters = [NSMutableCharacterSet alphanumericCharacterSet];
-  [allowedCharacters
-      formUnionWithCharacterSet:[NSCharacterSet characterSetWithCharactersInString:@"-_"]];
-
-  NSCharacterSet *characters = [NSCharacterSet characterSetWithCharactersInString:APIKey];
-  if (![allowedCharacters isSupersetOfSet:characters]) {
-    [validationIssues addObject:@"API Key must contain only base64 url-safe characters characters"];
-  }
-
-  if (validationIssues.count > 0) {
-    [NSException
-         raise:kFirebaseInstallationsErrorDomain
-        format:
-            @"%@[%@] Could not configure Firebase Installations due to invalid FirebaseApp "
-            @"options. `FirebaseOptions.APIKey` doesn't match the expected format: %@. If you use "
-            @"GoogleServices-Info.plist please download the most recent version from the Firebase "
-            @"Console. If you configure Firebase in code, please make sure you specify all "
-            @"required parameters.",
-            kFIRLoggerInstallations, kFIRInstallationsMessageCodeInvalidFirebaseAppOptions,
-            [validationIssues componentsJoinedByString:@", "]];
   }
 }
 

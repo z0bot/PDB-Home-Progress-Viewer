@@ -17,6 +17,7 @@ struct LoginPage: View{
     @State var action: Bool = false
     @State var errorText: String = ""
     @State var showAlert: Bool = false
+    @State var firstAppearance = true
     
     var body: some View {
         
@@ -74,13 +75,22 @@ struct LoginPage: View{
         
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,
                 maxHeight: .infinity).edgesIgnoringSafeArea([.bottom, .top])
-            .onAppear(){userName = "";password=""}
-    }
+            .onAppear() {
+                password = ""
+                userName = ""
+                if(firstAppearance && Auth.auth().currentUser != nil) {
+                    action = true
+                    firstAppearance = false
+                }
+        }
+        }
             
-           
 }
+    
         func SubmitLogin()
         {
+            
+            
             Auth.auth().signIn(withEmail: userName, password: password) {user, error in
                 if let error = error
                             {
@@ -90,6 +100,7 @@ struct LoginPage: View{
                                 return
                             }
                 action = true
+                firstAppearance = false
             }
         }
 }

@@ -5,6 +5,16 @@ target 'PDB-Client-App' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
+  pod 'FirebaseUI/Firestore', '~> 8.0'
+
+  pod 'FirebaseUI/Database', '~> 8.0'
+
+  pod 'FirebaseUI/Storage', '~> 8.0'
+
+  pod 'FirebaseUI/Auth', '~> 8.0'
+  
+  pod "CTPanoramaView"
+  
   #pod 'ExyteGrid', '0.1.0'
   # Pods for PDB-Client-App
   # Add the Firebase pod for Google Analytics

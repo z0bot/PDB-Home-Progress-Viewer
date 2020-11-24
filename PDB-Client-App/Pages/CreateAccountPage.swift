@@ -146,6 +146,11 @@ struct CreateAccountPage: View {
                     return
                 }
                 
+                let changeReq = Auth.auth().currentUser?.createProfileChangeRequest()
+                
+                changeReq?.displayName = firstName
+                changeReq?.commitChanges() // Async function
+                
                 let db = Firestore.firestore()
                 db.collection("Users").addDocument(data: [
                     "users_email": userName,

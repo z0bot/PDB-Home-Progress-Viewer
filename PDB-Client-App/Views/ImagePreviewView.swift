@@ -17,7 +17,9 @@ struct ImagePreviewView: View {
         VStack(spacing: .none) {
             URLImage(url: URL(string: image.imageURL)!) { image in
                 image.resizable()
+                    .cornerRadius(20)
                     .scaledToFill()
+                    .opacity(0.5)
                         
             }.frame(width: 120, height: 120, alignment: .center)
             .cornerRadius(20)
@@ -25,7 +27,7 @@ struct ImagePreviewView: View {
             Text(image.DateString())
                 .font(Font.custom("Microsoft Tai Le", size: 23))
                 .bold()
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .padding(.top, -70.0)
         }
     }
