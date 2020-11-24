@@ -32,7 +32,7 @@ struct MessageView: View {
                 Text(message.text)
                     .font(Font.custom("Microsoft Tai Le", size: 20))
             }.padding()
-            .background(colored ? Color.blue : Color.white)
+            .background(colored ? Color.blue : Color("backgroundColor")/*Color.white*/)
             .cornerRadius(10)
         }
     }

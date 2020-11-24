@@ -136,7 +136,7 @@ struct MessagePage: View {
                             .stroke(Color.gray, lineWidth: 1)
                     )
             }.padding()
-        }.background(Color("backgroundColor"))
+        }
         .onLoad {
             ref = Database.database()
                 .reference().child("messaging")

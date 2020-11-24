@@ -44,7 +44,7 @@ struct TabPage: View {
                         Image("file_Icon")
                     }
                 }.tag(2)
-        }.onAppear(){}
+        }
      
     }
    /* func getRooms(){

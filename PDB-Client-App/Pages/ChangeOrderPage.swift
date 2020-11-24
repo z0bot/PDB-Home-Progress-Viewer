@@ -13,18 +13,20 @@ struct ChangeOrderPage: View {
     var projectID: String
     
     var body: some View {
-        ASCollectionView(data: forms.indices, dataID: \.self) { index,arg  in
-            
-            NavigationLink(destination:
-                            SignFormPage(form: forms[index], projectID: projectID)
-            ) {
-                ChangeOrderPreviewView(form: forms[index])
+        VStack {
+            ASCollectionView(data: forms.indices, dataID: \.self) { index,arg  in
+                
+                NavigationLink(destination:
+                                SignFormPage(form: forms[index], projectID: projectID)
+                ) {
+                    ChangeOrderPreviewView(form: forms[index])
+                }
+                .padding([.top])
+                
+            }.layout {
+                .grid()
             }
-            .padding([.top])
-            
-        }.layout {
-            .grid()
-        }.background(Color("backgroundColor"))
+        }
     }
 }
 

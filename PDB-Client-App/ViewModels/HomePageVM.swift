@@ -36,16 +36,18 @@ class HomePageVM: ObservableObject {
                 
                 self.getRooms(id: p)
                     { rooms in
-                        let size = self.projects.count
-                        if(size != 0)
-                        {
-                            if (self.projects[size-1].docId == p)
-                            {
-                                self.projects.removeLast()
-                            }
-                        }
                         
+                        //var forms = [ChangeOrderForm]()
                         self.getForms(id: p) { forms in
+                            let size = self.projects.count
+                            if(size != 0)
+                            {
+                                if (self.projects[size-1].docId == p)
+                                {
+                                    self.projects.removeLast()
+                                }
+                            }
+                            
                             self.projects.append((Project(builderEmail: builderEmail, imageURL: imageURL, name: name, address: address, archived: archived, rooms: rooms, forms: forms, docId: p)))
                         }
                     }
@@ -68,18 +70,14 @@ class HomePageVM: ObservableObject {
                 self.db.document(id).collection("Rooms").document(document.documentID).collection("Images").getDocuments(completion:
                 {
                     QuerySnapshot, error in
-             
-                        for document in QuerySnapshot!.documents
-                        {
-                            let imageRef = document.data()["imageURL"] as? String ?? ""
-                            let date = document.data()["date"] as? Date ?? Date(timeIntervalSinceNow: 0)
-                            let is360 = document.data()["is360"] as? Bool ?? false
-                            images.append(ImageModel(id: UUID(), imageURL: imageRef, date: date, is360: is360))
-                            
-                        }
+                    self.imagesFromSnapshot(querySnap: QuerySnapshot!) { images in
                         rooms.append(Room(id: UUID(), name: name, images: images))
-                    completion(rooms)
+                        completion(rooms)
+                    }
+                        
+                    
                  })
+                
                 
              }
             if(QuerySnapshot?.documents.count==0)
@@ -88,7 +86,23 @@ class HomePageVM: ObservableObject {
             }
          }
      }
+      
+    func imagesFromSnapshot(querySnap: QuerySnapshot, completion:@escaping (([ImageModel]) -> ())) {
+        var images = [ImageModel]()
         
+        for document in querySnap.documents
+        {
+            
+            let imageRef = document.data()["imageURL"] as? String ?? ""
+            let date = document.data()["date"] as? Date ?? Date(timeIntervalSinceNow: 0)
+            let is360 = document.data()["is360"] as? Bool ?? false
+            images.append(ImageModel(id: UUID(), imageURL: imageRef, date: date, is360: is360))
+            
+        }
+        
+        completion(images)
+    }
+    
     func getUser(completion: @escaping((User)->()))
     {
         var empty = [String]()

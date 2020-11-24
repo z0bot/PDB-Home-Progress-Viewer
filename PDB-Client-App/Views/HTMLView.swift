@@ -11,9 +11,10 @@ import WebKit
 struct HTMLView: UIViewRepresentable {
 
    let html: String
+    let headerString = "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></header>"
 
-   func makeUIView(context: UIViewRepresentableContext<Self>) -> UILabel {
-        let label = UILabel()
+   func makeUIView(context: Context) -> WKWebView {
+        /*let label = UILabel()
         DispatchQueue.main.async {
             let data = Data(self.html.utf8)
             if let attributedString = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil) {
@@ -21,10 +22,14 @@ struct HTMLView: UIViewRepresentable {
             }
         }
 
-        return label
+        return label*/
+        return WKWebView()
+        
     }
 
-    func updateUIView(_ uiView: UILabel, context: Context) {}
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        uiView.loadHTMLString(headerString + html, baseURL: nil)
+    }
 }
 
 struct HTMLView_Previews: PreviewProvider {
