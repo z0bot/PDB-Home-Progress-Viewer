@@ -68,7 +68,7 @@ struct HomePage: View {
                 )
                 //.frame(height: .infinity)
                 .padding(.all)
-                AddProjectPage(isShown: $showAlert, returnprojectCode: $projectCode)
+                AddProjectPage(vm: viewModel, isShown: $showAlert, returnprojectCode: $projectCode)
         }
                 /*LazyVGrid(columns: cols,
                           spacing: 30)*/

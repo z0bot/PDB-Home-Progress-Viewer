@@ -10,6 +10,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 struct AddProjectPage: View {
+    @ObservedObject var vm : HomePageVM
     @Binding var isShown: Bool
     @Binding var returnprojectCode: String
     @State var projectCode = ""
@@ -118,10 +119,12 @@ struct AddProjectPage: View {
                     for document in QuerySnapshot!.documents
                     {
                         db.collection("Users").document(document.documentID).updateData(["projects" : FieldValue.arrayUnion([projectCode])])
+                        vm.getProjects()
                     }
             
                    
                 }
+                
                 isShown.toggle()
                 } else {
                     self.errorText = "Not a valid project code."
