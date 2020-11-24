@@ -124,7 +124,6 @@ class HomePageVM: ObservableObject {
                
             }
     }
-}
     
     /*func getImages(pid: String, rid: String, completion: @escaping (([ImageModel]) -> ()))
     {
