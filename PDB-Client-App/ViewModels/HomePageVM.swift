@@ -20,7 +20,7 @@ class HomePageVM: ObservableObject {
     {
         self.getUser()
             { user in
-            self.projects = [Project]()
+              self.projects = [Project]()
                 for p in user.Projects
                 {
                     let projectQuery = self.db.document(p)
@@ -124,6 +124,7 @@ class HomePageVM: ObservableObject {
                
             }
     }
+}
     
     /*func getImages(pid: String, rid: String, completion: @escaping (([ImageModel]) -> ()))
     {

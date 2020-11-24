@@ -10,6 +10,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 struct AddProjectPage: View {
+    @ObservedObject var vm : HomePageVM
     @Binding var isShown: Bool
     @Binding var returnprojectCode: String
     @State var projectCode = ""
@@ -111,6 +112,19 @@ struct AddProjectPage: View {
         db.collection("Projects").document(projectCode).getDocument { (document, error) in
             if let document = document, document.exists {
                     returnprojectCode = projectCode
+                    
+                let userEmail = Auth.auth().currentUser?.email
+                db.collection("Users").whereField("users_email", isEqualTo: userEmail).getDocuments{
+                    QuerySnapshot, error in
+                    for document in QuerySnapshot!.documents
+                    {
+                        db.collection("Users").document(document.documentID).updateData(["projects" : FieldValue.arrayUnion([projectCode])])
+                        vm.getProjects()
+                    }
+            
+                   
+                }
+                
                 isShown.toggle()
                 } else {
                     self.errorText = "Not a valid project code."
@@ -122,8 +136,3 @@ struct AddProjectPage: View {
 }
 
 
-struct AddProjectPage_Previews: PreviewProvider {
-    static var previews: some View {
-        AddProjectPage(isShown: .constant(true), returnprojectCode: .constant("")).background(Color.white)
-    }
-}

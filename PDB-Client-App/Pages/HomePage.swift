@@ -70,7 +70,7 @@ struct HomePage: View {
                 )
                 //.frame(height: .infinity)
                 .padding(.all)
-                AddProjectPage(isShown: $showAlert, returnprojectCode: $projectCode)
+                AddProjectPage(vm: viewModel, isShown: $showAlert, returnprojectCode: $projectCode)
         }
                 /*LazyVGrid(columns: cols,
                           spacing: 30)*/
@@ -110,16 +110,9 @@ struct HomePage: View {
                     .font(Font.custom("Microsoft Tai Le", size: 23))
                     .bold()
                     .foregroundColor(Color("TextGreen"))
-                    .onTapGesture {
-                        do {
-                            try Auth.auth().signOut()
-                        }
-                        catch is Error {
-                            print("Couldn't log out")
-                        }
-                        
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
+                .onTapGesture {
+                    logOut()
+                }
                 Spacer()
             }
             .padding()
@@ -127,8 +120,19 @@ struct HomePage: View {
         }.onAppear(){self.viewModel.getProjects()}
         .navigationBarBackButtonHidden(true)
     }
+    
+    func logOut()
+    {
+        do {
+            try Auth.auth().signOut()
+            self.presentationMode.wrappedValue.dismiss()
+            
+        } catch let err {
+            print(err)
+        }
+    
+    }
 }
-
 struct HomePage_Previews: PreviewProvider {
     static var previews: some View {
         HomePage()
