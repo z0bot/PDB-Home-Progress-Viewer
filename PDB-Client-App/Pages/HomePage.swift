@@ -55,7 +55,7 @@ struct HomePage: View {
                 ASCollectionView(data: viewModel.projects) { project,arg  in
                     
                     NavigationLink(destination:
-                                    TabPage(project: project)
+                                    TabPage(project: project, vm: viewModel)
                     ) {
                         ProjectSelectionView(project: project)
                     }.navigationBarHidden(true)

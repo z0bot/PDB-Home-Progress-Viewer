@@ -11,6 +11,7 @@ import FirebaseUI
 
 struct TabPage: View {
         var project: Project
+    @ObservedObject var vm: HomePageVM
         @State private var selection = 1
     var body: some View {
         
@@ -35,7 +36,7 @@ struct TabPage: View {
                         Image("gallery_Icon")
                     }
                 }.tag(1)
-            ChangeOrderPage(forms: project.changeOrderForms, projectID: project.docId)
+            ChangeOrderPage(forms: project.changeOrderForms, projectID: project.docId, vm: vm)
                 .tabItem {
                     if(selection == 2) {
                         Image("fileActive_Icon")

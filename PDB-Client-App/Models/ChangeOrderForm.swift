@@ -19,7 +19,7 @@ struct ChangeOrderForm: Identifiable {
         return dateFormatter.string(from: date)
     }
     
-    var initials: String
+    var signedname: String
     var signed: Bool
     var htmlData: String
     
@@ -29,15 +29,15 @@ struct ChangeOrderForm: Identifiable {
         date = Date()
         htmlData = "<html><body><p>This is an example of a simple HTML page with one paragraph. It comes from a hardcoded variable</p></body> </html>"
         signed = false
-        initials = ""
+        signedname = ""
     }
     
-    init(fireID: String, title: String, date: Date, htmlData: String, signed: Bool, initials: String) {
+    init(fireID: String, title: String, date: Date, htmlData: String, signed: Bool, signedname: String) {
         self.fireID = fireID
         self.title = title
         self.date = date
         self.htmlData = htmlData
         self.signed = signed
-        self.initials = initials
+        self.signedname = signedname
     }
 }
