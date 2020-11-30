@@ -17,8 +17,7 @@ struct Project: Identifiable {
     public var builderEmail: String
     public var docId: String
     public var rooms: [Room]
-    public var changeOrderForms: [ChangeOrderForm]
-    public var fireForms: FUIArray?
+    //public var fireForms: FUIArray?
     
     //static let `default` = Self(imageURL: "", name: "2020 Bernie St.", address: "2020 Bernie St.")
     
@@ -28,13 +27,12 @@ struct Project: Identifiable {
         self.address = address
         rooms = []
         archived = false
-        changeOrderForms = []
         builderEmail = ""
         docId = ""
-        fireForms = nil
+        //fireForms = nil
     }
     
-    init(builderEmail: String, imageURL: String, name: String, address: String, archived: Bool, rooms: [Room], forms: [ChangeOrderForm], docId: String) {
+    init(builderEmail: String, imageURL: String, name: String, address: String, archived: Bool, rooms: [Room], docId: String) {
         self.builderEmail = builderEmail
         self.imageURL = imageURL
         self.name = name
@@ -42,7 +40,6 @@ struct Project: Identifiable {
         self.archived = archived
         self.rooms = rooms
         self.docId = docId
-        self.changeOrderForms = forms
-        fireForms = nil
+        //fireForms = nil
 }
 }
