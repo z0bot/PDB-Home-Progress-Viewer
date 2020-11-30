@@ -11,15 +11,17 @@ struct ChangeOrderPreviewView: View {
     var form: ChangeOrderForm
     
     var body: some View {
-        VStack {
+        ZStack {
             if(!form.signed) {
                 Image("alert")
-                    .offset(x: 75, y: 30)
+                    .offset(x: 60, y: -60)
                     .zIndex(1.1)
             }
+            VStack{
             Image("ChangeOrderFormPreviewTemp")
             Text(form.title)
                 .font(Font.custom("Microsoft Tai Le", size: 23))
+            }
         }
     }
 }

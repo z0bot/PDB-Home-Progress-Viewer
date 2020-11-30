@@ -36,7 +36,7 @@ struct TabPage: View {
                         Image("gallery_Icon")
                     }
                 }.tag(1)
-            ChangeOrderPage(forms: project.changeOrderForms, projectID: project.docId, vm: vm)
+            ChangeOrderPage(projectID: project.docId, vm: vm)
                 .tabItem {
                     if(selection == 2) {
                         Image("fileActive_Icon")

@@ -38,7 +38,7 @@ class HomePageVM: ObservableObject {
                     { rooms in
                         
                         //var forms = [ChangeOrderForm]()
-                        self.getForms(id: p) { forms in
+                       //self.getForms(id: p) { forms in
                             let size = self.projects.count
                             if(size != 0)
                             {
@@ -48,8 +48,8 @@ class HomePageVM: ObservableObject {
                                 }
                             }
                             
-                            self.projects.append((Project(builderEmail: builderEmail, imageURL: imageURL, name: name, address: address, archived: archived, rooms: rooms, forms: forms, docId: p)))
-                        }
+                    self.projects.append((Project(builderEmail: builderEmail, imageURL: imageURL, name: name, address: address, archived: archived, rooms: rooms, docId: p)))
+                      //  }
                     }
               }
             }
@@ -94,7 +94,8 @@ class HomePageVM: ObservableObject {
         {
             
             let imageRef = document.data()["imageURL"] as? String ?? ""
-            let date = document.data()["date"] as? Date ?? Date(timeIntervalSinceNow: 0)
+            let datestring = document.data()["date"] as? String ?? Date(timeIntervalSinceNow: 0).ToString()
+            let date = Date.String(from: datestring)
             let is360 = document.data()["is360"] as? Bool ?? false
             images.append(ImageModel(id: UUID(), imageURL: imageRef, date: date, is360: is360))
             
@@ -143,33 +144,7 @@ class HomePageVM: ObservableObject {
         completion(images)
     }*/
 
-    func getForms(id: String, completion:@escaping ((([ChangeOrderForm]) -> ()))) {
-        var forms = [ChangeOrderForm]()
-        
-        //var query = Firestore.firestore().document(id).collection("Forms")
-        
-        //FirebaseUI stuff here
-        
-        self.db.document(id).collection("Forms").getDocuments(completion:
-        {
-            QuerySnapshot, error in
-                for document in QuerySnapshot!.documents
-                {
-                    let fireID = document.documentID
-                    let title = document.data()["title"] as? String ?? ""
-                    let dateStr = document.data()["date"] as? String ?? ""
-                    let date = Date.String(from: dateStr)
-                    
-                    let formHTML = document.data()["html"] as? String ?? ""
-                    let signed = document.data()["signed"] as? Bool ?? false
-                    let signedname = document.data()["signedname"] as? String ?? ""
-                    forms.append(ChangeOrderForm(fireID: fireID, title: title, date: date, htmlData: formHTML, signed: signed, signedname: signedname))
-                    
-                }
-            completion(forms)
-            
-        })
-    }
+    
 }
 
 

@@ -17,8 +17,14 @@ struct SignFormPage: View {
     var form: ChangeOrderForm
     var projectID: String
     @ObservedObject var vm: HomePageVM
+    @State var isSigned = false
+    @State var isNewlySigned = false
+    @State var signedname = ""
+    @State var showAlert: Bool = false
     var userdb = Firestore.firestore().collection("Users")
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
+        
                 VStack {
             HStack {
                 Text("Change Order")
@@ -31,53 +37,58 @@ struct SignFormPage: View {
             }.padding([.leading, .top, .trailing])
             
             Spacer()
-            
             VStack {
-                HTMLView(html: form.htmlData)
+                HTMLView(html: form.htmlData).alert(isPresented: self.$showAlert, content: {
+                                                        Alert(title: Text("Form Signed"), message: Text("This change order form was successfully signed."),
+                                                              dismissButton:  .cancel(Text("Ok")){self.back()}
+                                                        )})
                 VStack(alignment: .leading) {
                     Spacer()
-                    if !form.signed{
-                        Button(action: {
-                            SignForm() { success in
-                                if success {
-                                    //form.signed = true
+                   
+                    if !isNewlySigned
+                    {
+                        if !form.signed{
+                            Button(action: {
+                                SignForm() { success in
+                                    if success {
+                                        //form.signed = true
+                                    }
+                                    else {
+                                        //Error
+                                    }
                                 }
-                                else {
-                                    //Error
-                                }
-                            }
-                        }){ Text("Sign Form").padding([.top, .bottom], 12.0)
-                            .padding([.leading, .trailing], 30)}
-                            .background(Color.gray)
-                            .foregroundColor(Color.white)
-                            .cornerRadius(9)
+                            }){ Text("Sign Form").padding([.top, .bottom], 12.0)
+                                .padding([.leading, .trailing], 30)}
+                                .background(Color.gray)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(9)
+                        }
                     }
                     ZStack{
                         Image("signHereField")
-                        Text(form.signedname).font(Font.custom("Snell Roundhand", size: 40))
-                        .offset(x: -1, y: 5).scaledToFit()
+                        if isSigned
+                        {
+                            Text(form.signedname).font(Font.custom("Snell Roundhand", size: 40))
+                            .offset(x: -1, y: 5).scaledToFit()
+                        }
+                        if isNewlySigned
+                        {
+                            Text(signedname).font(Font.custom("Snell Roundhand", size: 40))
+                            .offset(x: -1, y: 5).scaledToFit()
+                        }
+                        
                     }
                     Spacer()
                 }
-                .onTapGesture(count: 1, perform: {
-                    SignForm() { success in
-                        if success {
-                            
-                        }
-                        else {
-                            //Error
-                        }
-                    }
-                })
             }.padding()
             
             Spacer()
-        }
+                }.onAppear(){isSigned = form.signed}
     }
     
     func SignForm(completion:@escaping ((Bool) -> ())) {
         getUser(){user in
-            var signedname = user.FirstName + " " + user.LastName
+            self.signedname = user.FirstName + " " + user.LastName
             if signedname.count > 12
             {
                 if user.LastName.count < 10
@@ -89,6 +100,7 @@ struct SignFormPage: View {
                     signedname = user.FirstName[0] + ". " + user.LastName[0] + "."
                 }
             }
+            isNewlySigned = true
         var ref = Firestore.firestore().collection("Projects").document(projectID).collection("Forms").document(form.fireID)
         
         ref.updateData([
@@ -100,11 +112,16 @@ struct SignFormPage: View {
                 completion(false)
             }
             else {
-                vm.getProjects()
+                self.showAlert = true
                 completion(true)
             }
         }
         }
+    }
+    
+    func back()
+    {
+        self.presentationMode.wrappedValue.dismiss()
     }
     
     func getUser(completion: @escaping((User)->()))
