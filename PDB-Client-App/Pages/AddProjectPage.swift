@@ -9,6 +9,12 @@ import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
 struct AddProjectPage: View {
     @ObservedObject var vm : HomePageVM
     @Binding var isShown: Bool
@@ -26,6 +32,7 @@ struct AddProjectPage: View {
                 .rotationEffect(.degrees(45))
                 .onTapGesture(count: 1, perform: {
                     isShown.toggle()
+                    self.hideKeyboard()
                 }).padding(.bottom,30)
                 
             ZStack{
@@ -124,7 +131,7 @@ struct AddProjectPage: View {
             
                    
                 }
-                
+                self.hideKeyboard()
                 isShown.toggle()
                 } else {
                     self.errorText = "Not a valid project code."
